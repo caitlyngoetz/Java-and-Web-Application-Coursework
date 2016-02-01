@@ -1,0 +1,52 @@
+****************
+*Polymorphism Extra Credit
+*CompSci 221
+*September 8, 2014
+*Caitlyn Goetz
+****************
+
+OVERVIEW:
+	This progam takes different classes that all extend the same class in order to 
+	make random objects appear on the screen when the button "Draw" is clicked.
+	
+INCLUDED FILES:
+	PolyPainter.java - tells the class what to draw when
+	PolyPainterDrawPanel.java - this is the class that draws the panel for the shapes to go in.
+	PaintableThing.java - make the outline for all the other shapes/classes to follow
+	OvalThing.java - draws an oval
+	FilledOvalThing.java - fills the oval
+	SquareThing.java - draws a square
+	LineThing.java - draws a line
+	README - this file
+	
+BUILDING AND RUNNING
+	For compiling the program 
+		$ javac PolyPainter.java
+		
+	For running the program
+		$ java PolyPainter
+		
+PROGRAM DESIGN:
+	The program starts by calling the PolyPainter class which then goes into the
+	PaintableThing class.  This is the parent class for all of the children shape clases
+	The first shape that is called is SquareThing().  This program draws a square of 
+	a random color and size.  The next one that is called is LineThing().  This draws
+	a line in a random color and random spot in the frame. The next shape called is OvalThing().
+	This also builds a oval and then colors it and puts it somewhere in the frame.  All of 
+	these classes extend PaintableThing.  The only one that doesn't is called FilledOvalThing.
+	the parent class for this is OvalThing.  This class fills in the oval already drawn with
+	a random color.
+	
+TESTING
+	For testing on this project, I saved the project every time I made a change and then ran it
+	to ensure that it would work with everything. I believe that my program is idiot-proof because
+	the user can have no input into the program
+	
+DISCUSSION:
+	I had a hard time with the array for the shapes because I forgot to put different numbers beside 0 in the array so they were assigning the colors
+	to a different spot in the array.  Another thing I kept forgetting was to update the amount of 
+	shapes in the PolyPainter class.  That was a hard problem to find.  Other than those the program went smoothly.
+	
+EXTRA CREDIT:
+	This whole project is extra credit!!! YAY!!
+	 

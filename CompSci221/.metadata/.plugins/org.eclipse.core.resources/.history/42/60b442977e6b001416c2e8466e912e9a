@@ -1,0 +1,241 @@
+import java.util.Iterator;
+import java.util.ListIterator;
+
+
+public class DoubleLinkedList<T> implements DoubleLinkedListADT<T> {
+	private LinearNode<T> head, tail;
+	private int size, modCount;
+	
+	public DoubleLinkedList(){
+		head = tail = null;
+		size = 0;
+	}
+
+	@Override
+	public void addToFront(T element) {
+		LinearNode<T> newNode = new LinearNode<T>(element);
+		if(size == 0){
+		head = tail = newNode;
+		}else{
+			newNode.setNext(head);
+			head.setPrevious(newNode);
+			head = newNode;
+		}
+		modCount++;
+		size++;
+		
+	}
+
+	@Override
+	public void addToRear(T element) {
+		LinearNode<T> newNode = new LinearNode<T>(element);
+		if(size == 0){
+			head = tail = newNode;
+		}else{
+			tail.setNext(newNode);
+			tail = newNode;
+			newNode.setPrevious(tail);
+		}
+		modCount++;
+		size++;
+		
+	}
+
+	@Override
+	public void addAfter(T element, T target) {
+		LinearNode<T> current = head;
+		boolean found = false;
+		while(current != null && !found){
+			if(current.getElement().equals(target)){
+				found = true;
+			}else{
+				current = current.getNext();
+			}
+		}
+		if(!found) throw new ElementNotFoundException("DoubleLinkedList");
+		LinearNode<T> newNode = new LinearNode<T>(element);
+		if(tail == current){
+			newNode.setPrevious(tail);
+			tail.setNext(newNode);
+			tail = newNode;
+			
+		}else {
+		newNode.setNext(current.getNext());
+		current.getNext().setPrevious(newNode);
+		current.setNext(newNode);
+		newNode.setPrevious(current);
+		}
+		size++;
+		modCount++;
+		
+	}
+
+	@Override
+	public T removeFirst() {
+		if(isEmpty()) throw new EmptyCollectionException("DoubleLinkedList");
+		
+		LinearNode<T> oldHead = head;
+
+		if(size == 1){
+			head = tail = null;
+		}else{
+			head = head.getNext();
+			head.setPrevious(null);
+		}
+		modCount++;
+		size--;
+		return oldHead.getElement();
+	}
+
+	@Override
+	public T removeLast() {
+		if(isEmpty()) throw new EmptyCollectionException("DoubleLinkedList");
+		
+		LinearNode<T> retVal = tail;
+		LinearNode<T> newTail = tail.getPrevious();
+		tail.setNext(null);
+		tail = newTail;
+		
+		modCount++;
+		size--;
+		return retVal.getElement();
+	}
+
+	@Override
+	public T remove(T element) {
+		if(isEmpty()) throw new EmptyCollectionException("DoubleLinkedList");
+		
+		boolean found = false;
+		LinearNode<T> current = head;
+		LinearNode<T> currentPrevious = null;
+		LinearNode<T> currentNext = null;
+
+		while (current != null && !found)
+			if (element.equals(current.getElement()))
+				found = true;
+			else
+			{
+				current = current.getNext();
+			}
+
+		if (!found)
+			throw new ElementNotFoundException("DoubleLinkedList");
+		
+		currentNext = current.getNext();
+		currentPrevious = current.getPrevious();
+
+		if (size() == 1){  // only one element in the list
+			head = tail = null;
+		}else if (current.equals(head)){  // target is at the head 
+			head = current.getNext();
+			current.setPrevious(head);
+		}else if (current.equals(tail))  // target is at the tail
+		{
+			tail.setPrevious(tail.getPrevious());
+			tail.setNext(null);
+		}
+		else{  // target is in the middle
+		  	currentPrevious.setNext(currentNext);
+		  	currentNext.setPrevious(current.getPrevious());
+		}
+		size--;
+		modCount++;
+
+		return current.getElement();
+	}
+
+	@Override
+	public T first() {
+		if(isEmpty()) throw new EmptyCollectionException("DoubleLinkedList");
+		return head.getElement();
+	}
+
+	@Override
+	public T last() {
+		if(isEmpty()) throw new EmptyCollectionException("DoubleLinkedList");
+		return tail.getElement();
+	}
+
+	@Override
+	public boolean contains(T target) {
+		if(isEmpty()) throw new EmptyCollectionException("DoubleLinkedList");
+		
+		boolean found = false;
+		LinearNode<T> current = head;
+
+		while (current != null && !found)
+			if (target.equals(current.getElement()))
+				found = true;
+			else
+			{
+				current = current.getNext();
+			}
+		return found;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return (size == 0);
+	}
+
+	@Override
+	public int size() {
+		return size;
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void add(int index, T element) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void set(int index, T element) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void add(T element) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public T get(int index) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int indexOf(T element) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public T remove(int index) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ListIterator<T> listIterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ListIterator<T> listIterator(int startingIndex) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+}

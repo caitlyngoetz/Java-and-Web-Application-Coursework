@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;CircularArrayQueue&apos; to &apos;CircularArrayQueueHomework&apos;" description="Rename resource &apos;CircularArrayQueue&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/CircularArrayQueue" name="CircularArrayQueueHomework" stamp="1415734845723" updateReferences="true"/>
+</session>

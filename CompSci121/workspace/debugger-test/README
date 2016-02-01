@@ -1,0 +1,26 @@
+*******************
+*Lab
+*CompSci 121-003
+*11th April, 2014
+*Caitlyn Goetz
+*******************
+
+There were three files with bugs in them:
+	*DebuggerTest2.java
+	*FindRoute.java
+	*Car.java
+	
+DebuggerTest2.java
+The bug in this one was that the index was out of range.  So all I did to the fleet.length()
+was subtract one from it.  Thus putting the object back in range and making it so that 
+it did not try and add a value to a nonexisting array object.
+
+FindRout.java
+The bug in this class was that the while loop had a semicolon after it as well as a curly
+bracket.  So all I did was take out the semicolon.  This ended the  endless loop.
+
+Car.java
+There was actually two things that I had to fix in this one.  They are both the same thing
+mostly.  When the car was making a direction change its current position variable was being
+modified the wrong way.  So all I had to do was to make the +'s into -'s and visa versa for 
+the ones that were wrong.

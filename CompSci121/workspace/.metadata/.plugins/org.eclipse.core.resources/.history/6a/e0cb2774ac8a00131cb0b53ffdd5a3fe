@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+
+public class ConvertToSeconds {
+
+	
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.print("Enter hours: ");
+		System.out.print("Enter minutes: ");
+		System.out.print("Enter seconds: ");
+		
+		int hours = scan.nextInt();
+		int minutes = scan.nextInt();
+		int seconds = scan.nextInt();
+		System.out.print(hours + minutes + seconds);
+
+	}
+
+}

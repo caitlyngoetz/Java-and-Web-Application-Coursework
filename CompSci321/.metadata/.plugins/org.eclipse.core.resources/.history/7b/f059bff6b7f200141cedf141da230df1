@@ -1,0 +1,166 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+
+/**
+*
+* @author scrabtre
+* @author cgoetz
+*
+*/
+
+public class BTreeIO {
+	private Cache<BTreeNode> cache;
+	private RandomAccessFile fileIO;
+	private int degree, length;
+	
+	public BTreeIO(String fileName, int degree, int length, int cacheSize, int debug) throws FileNotFoundException {
+		fileIO = new RandomAccessFile(fileName, "rw");
+		cache = new Cache<BTreeNode>(cacheSize);
+		this.length = length;
+		this.degree = degree;
+	}
+	
+	public BTreeNode readIn(int treeIndex, int degree) throws IOException {
+		BTreeNode newNode = new BTreeNode(1, false, false, treeIndex);
+		newNode = cache.remove(newNode);
+		if(newNode != null){
+			newNode.children = newNode.children;
+			newNode.degree = newNode.degree;
+			newNode.index = newNode.index;
+			newNode.leaf = newNode.leaf;
+			newNode.keys = newNode.keys;
+			newNode.maxNumKeys = newNode.maxNumKeys;
+			newNode.root = newNode.root;
+			newNode.parent = newNode.parent;
+			cache.add(newNode);
+			return newNode;
+		}
+		
+		newNode = new BTreeNode(1, false, false, treeIndex);
+		int numOfKeys;
+		newNode.degree = degree;
+		newNode.index = treeIndex;
+		newNode.root = false;
+		newNode.maxNumKeys = (degree - 1) * 2;
+		
+		ByteBuffer buf = ByteBuffer.allocate(4 + 4 + 4 + newNode.maxNumKeys * (8 + 4) + (newNode.maxNumKeys + 1) * (4));
+		fileIO.seek(getNodeOffset(treeIndex));
+		fileIO.read(buf.array());
+		
+		newNode.parent = buf.getInt();
+		if(buf.getInt() == 1){
+			newNode.leaf = true;
+		}else{
+			newNode.leaf = false;
+		}
+		
+		numOfKeys = buf.getInt();
+		
+		newNode.keys = new ArrayList<TreeObject>(numOfKeys);
+		for(int key = 0; key < newNode.maxNumKeys; key++){
+			if(key < numOfKeys){
+				newNode.keys.add(key, new TreeObject(buf));
+			}else{
+				buf.getLong();
+				buf.getInt();
+			}
+		}
+		newNode.children = new ArrayList<Integer>(numOfKeys + 1);
+		
+		if(!newNode.leaf){
+			for(int children = 0; children < newNode.maxNumKeys + 1; children++){
+				if(children < numOfKeys + 1){
+					newNode.children.add(children, buf.getInt());
+				}else{
+					buf.getInt();
+				}
+			}
+		}
+		
+		BTreeNode returnNode = newNode;
+		newNode = cache.add(newNode);
+		
+		if(newNode != null){
+			writeIntoFile(newNode, false);
+		return returnNode;
+		
+		}
+	}
+		protected int getNodeOffset(int index){
+			return BTree.SIZE_OF_META_DATA + (sizeOfBTreeNode(degree) * index);
+		}
+		
+		public void writeIntoFile(BTreeNode node, boolean writeRoot) throws IOException {
+			if(node.root && !writeRoot) return;
+			ByteBuffer buf = ByteBuffer.allocate(4 + 4 + 4 + node.maxNumKeys * (8 + 4) + (node.maxNumKeys + 1) * (4));
+			fileIO.seek(getNodeOffset(node.index));
+			
+			buf.putInt(node.parent);
+			buf.putInt(node.leaf ? 1 : 0); //What is this?????
+			buf.putInt(node.keys.size());
+			
+			for(int k = 0; k < node.maxNumKeys; k++){
+				if(k < node.keys.size()){
+					buf.putLong(node.keys.get(k).sequence);
+					buf.putInt(node.keys.get(k).getFrequency());
+				}else{
+					buf.putLong(-1);
+					buf.putInt(-1);
+				}
+			}
+			for(int c = 0; c < node.maxNumKeys + 1; c++){
+				if(c < node.children.size()){
+					buf.putInt(node.children.get(c));
+				}else{
+					buf.putInt(-1);
+				}
+			}
+			fileIO.write(buf.array());
+		}
+		
+		protected void writeMetaData(int degree, int rootIndex, int sequenceLength) throws IOException {
+			fileIO.seek(0L);
+			fileIO.writeInt(degree);
+			fileIO.writeInt(rootIndex);
+			fileIO.writeInt(sequenceLength);
+		}
+		
+		public void dumpTree(BTreeNode cur, BTreeNode next, BTreeNode root) throws IOException {
+			int rootIndex = root.index;
+			assert(root != null);
+			if(cur != null)
+				writeIntoFile(cur, true);
+			if(next != null)
+				writeIntoFile(next, true);
+			writeIntoFile(root, true);
+			writeMetaData(degree, rootIndex, length);
+		}
+		
+		public int sizeOfBTreeNode(int degree){
+			int maxKeyCount = (degree - 1) * 2;
+			int metaDataSize = (BTree.SIZE_OF_INT * 2) + BTree.SIZE_OF_BOOLEAN;
+			//Something goofy with keysize
+			int keysSize = (maxKeyCount);
+			int childrenSize = BTree.SIZE_OF_INT * (maxKeyCount + 1);
+			int BTreeNodeSize = metaDataSize + keysSize + childrenSize;
+			return BTreeNodeSize;
+		}
+		
+		public int readMetaDegree() throws IOException {
+			fileIO.seek(0L);
+			return fileIO.readInt();
+		}
+		
+		public int readMetaIndexOfRoot() throws IOException {
+			fileIO.seek(4L);
+			return fileIO.readInt();
+		}
+		
+		public int readMetaSeqLength() throws IOException {
+			fileIO.seek(8L);
+			return fileIO.readInt();
+		}
+}

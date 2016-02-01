@@ -1,0 +1,8 @@
+Caitlyn Goetz   CompSci 121-003
+
+Didn't have any problem getting the program to read the input and store it but had a hard time figuring out how to convert
+it to the seconds from original numbers.  Found out that I was trying to divide instead of multiply the number by 60.  So,
+once I figured that out all went well.  I also had a hard time remembering how to close the Scanner but I finally figured
+that out as well.  The difference between print and println was a big thing that I ran into.  I like print better for this
+program so you can tell what number and what units are entered.
+Had a little bit of a hard time figuring out how do use the modulo (%)

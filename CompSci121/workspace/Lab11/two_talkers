@@ -1,0 +1,5 @@
+Two components can be set up to share the same listener with overrides. 
+This is like having a parent class and a child class.  The overridden method my enhance the
+parent's behavior by invoking some of the methods already written in the parent class.
+The example given to us in class said: super.someMethodName(..);
+We can use his to move the method from one into the other. 

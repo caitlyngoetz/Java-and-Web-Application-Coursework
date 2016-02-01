@@ -1,0 +1,66 @@
+********************************
+* Project   Bioinformatics
+* Class:   CS 321 - Section 001
+* Date:    May 3, 2015
+* Name:    Caitlyn Goetz
+* Partner: Sydney Crabtree
+********************************************
+
+OVERVIEW:
+
+This program takes in a GeneBank file and converts it to a BTree, where each
+object is a DNA sequence of a specified length. It parses through the file
+and looks at all of the DNA subsequences. To save memory, the program takes 
+the four possible bases and converts each of them into a 2 bit binary number.
+The binary representation of the subsequences will result in a 64-bit integer
+value that the program uses as a key value. The program also uses a cache to
+improve the performance of the BTree. 
+
+INCLUDED FILES:
+
+BTree.java - Represents a BTree
+BTreeNode.java - Represents a single node in the BTree
+GeneBankCreateBTree.java - Creates a BTree out of a file from a GeneBank
+GeneBankSearch.java - Searches a BTree file for DNA sequences
+TreeObject.java - Stores a DNA subsequence in the BTree
+BTreeIO.java - Represents a BTreeIO
+FileParser.java - Parses through the files
+Cache.java - Represents a cache
+README - This file
+
+BUILDING AND RUNNING:
+
+All of the files should be located in one single directory.
+From the directory containing the .java source code, compile the program:
+	$ javac GeneBankCreateBTree.java 
+	$ javac GeneBankSearch.java
+	
+Run the programs from the directory:
+	$ java GeneBankeCreateBTree <degree> <gbk file> <sequence length> [<debug level>]
+	$ java GeneBankSearch <btree file> <query file> [<debug level>]
+
+PROGRAM DESIGN:
+
+The main concept of this program is to work with BTrees in the field of bioinformatics.
+This program has multiple classes that help it compile and run correctly. The class
+BTree represents a BTree data structure that holds all of the DNA substring information. 
+There is also a BTreeNode class that is similar, but only looks at a specific node of
+the BTree structure. This class holds only a few methods though, because most of the 
+others are located in the main BTree method. The GeneBankCreateBTree class is technically
+the most important of the classes because it actually creates a BTree out of the info
+from a Gene Bank file. 
+
+PROGRAM DEVELOPMENT AND TESTING DISCUSSION:
+
+This program was insane. It was really cool to be able to implement so many of the things
+that we learned this semester, but I felt like some of this project was a little bit out
+of the scope of what we knew. We tried really hard to make everything work, but the errors
+were so abundant that debugging was a real pain. Some of the errors were hard to understand
+unfortunately so it took us quite awhile to fix those leaving us with little time to fully
+fix the program. At this time, it doesn't fully work unfortunately. We really wish that 
+we had more time at the beginning of the month to work on it, but we just had so much going
+on in other classes that we were unable to have any focused time on it before this last week.
+So, as of right now the program is not working and we feel way over our head with the scope of
+this project.  There was just too much to do and there are so many exceptions to handle and maybe 
+a little bit more direction on it then was given (although this project did have more instructions
+than the previous projects, so yay there!)

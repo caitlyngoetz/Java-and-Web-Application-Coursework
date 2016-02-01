@@ -1,0 +1,77 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+	public class FileParser {
+		int seqLength;
+		File file = null;
+		BufferedReader bufferReader = null;
+		String parseLine = null;
+		
+		static String error = "Usage: java GeneBankCreateBTree <degree> <gbk file> <sequence length> <cache size> [<debug level>]";
+
+		public FileParser(int seqLength, File file) throws IOException {
+			this.seqLength = seqLength;
+			this.file = file;
+			parseFile();
+		}
+		
+		public String parseFile() throws IOException {
+			try{
+				FileReader fileReader = new FileReader(file);
+				bufferReader = new BufferedReader(fileReader);
+				StringBuffer stringBuffer = new StringBuffer();
+				String temp = bufferReader.readLine();
+				boolean flag = false;
+
+				while(temp != null){
+					String[] stringArray = temp.split(" ");
+					for(String string : stringArray){
+						if(string.equalsIgnoreCase("ORIGIN")) {
+							temp = bufferReader.readLine();
+							flag = true;
+						}
+						if(string.equalsIgnoreCase("//")){
+							flag = false;
+						}
+						if(flag == true){
+							stringBuffer.append(temp);
+						}
+					}
+					temp = temp.replaceAll("\\s", "");
+					//left out ^ in [^a-zA-Z]
+					temp = temp.replace("[a-zA-Z]", "");
+					/*if(flag == true){
+						stringBuffer.append(temp);
+					}*/
+				}
+				fileReader.close();
+				parseLine = stringBuffer.toString();
+			}
+			catch (FileNotFoundException e){
+				System.out.println("File not found: " + file + "\n\t" + error);
+				System.exit(0);
+			}
+			return parseLine;
+
+		}
+
+		public Boolean hasNext(int x){
+			boolean result = false; 
+			if(((parseLine.substring(x, x + seqLength)) != null) && (x + seqLength < parseLine.length())) {
+				result = true;
+			}
+			return result;
+		}
+
+		public int getStringLength() {
+			return parseLine.length();
+		}
+
+		public String next(int x) {
+			String seq = parseLine.substring(x, x + seqLength);
+			return seq;
+		}
+	}

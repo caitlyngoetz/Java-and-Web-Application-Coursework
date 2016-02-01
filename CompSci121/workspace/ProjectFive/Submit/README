@@ -1,0 +1,59 @@
+********************************
+* Project 5 / Mine Walker Game
+* Computer Science 121
+* May 7, 20014
+*Caitlyn Goetz
+********************************
+
+OVERVIEW:
+
+	This program builds a Mine Walker game that allows the user to find the safest path through the mines by clicking
+	and interacting with the program.
+	
+INCLUDED FILES:
+	* MineWalker.java  - this file builds the container and JFrame for the program to run on.
+	* MineWalkerPanel.java   - This program builds the rest of the GUI components and defines the game play.
+	* RandomWalk.java    -  This program finds a safe path from the start to the finish to make sure the game is playable.
+	* README   - This is this file
+	
+BUILDING AND RUNNING
+	All project files should be in the same directory.
+	From the directory containing the .java source code, compile the program:
+		$ javac MineWalkerPanel.java
+	Run the program from the directory containing MineWalkerPanel.class:
+		$ java MineWalkerPanel
+		
+	The program will then bring up the game screen.
+	
+PROJECT DESIGN NOTES:
+	The MineWalker builds the JFrame and extends the container so that all the panels can
+	be added into the Frame.  The MineWalkerPanel builds the gridPanel, sidePanel, and 
+	bottomPanel.  It uses the game play criteria to check for valid moves and to display
+	the color off of the color key that depicts the amount of mines.  It contains an 
+	actionListener that listens for the clicking of the mouse or the sliding of the gridSlider.
+	Most of the came play is written into the actionListener and the game buttons are separated
+	into other methods that control what happens when the buttons are clicked for game play.
+	So the hideMines method hides the mines when the "Hide Mine" button is clicked.  So all
+	of the methods are named to do what they do.  For scoring, the game starts out with 500
+	points.  Every time the person clicks/moves the score goes down 1 point.  If the player
+	clicks the show mines button the score goes down 50 points.  And it goes downs by 250 points
+	if the play hits the show path button.  When the player gets to the finish line (point 0,0)
+	a pop-up box comes up and lets the user know that he/she won.  
+	
+TESTING
+	I tested the program by dividing the program into smaller sections that were more manageable,
+	and then I worked on the individual problems one at a time making sure they work along
+	the way.  The program will not allow the user to click and make invalid moves or to alter
+	the gridSize during the game.  As far as I know, there are not any issues or bugs remaining 
+	in my program.
+	
+DISCUSSION:
+	This program was very intensive.  There were a lot of little things going on that we 
+	needed to make sure that they were working all together.  It was somewhat a technical
+	project so I had problems with some of the technicalities.  I had the hardest time getting 
+	color key for the buttons to work and stay there for the mines when the "Hide Mines" button
+	was pushed.  Mostly this was just a hard program to think about if I don't break it down
+	into smaller pieces and work on those pieces one by one.  But that is very time consuming.
+
+EXTRA CREDIT:
+	I did not attempt any extra credit for this project.  Thank you for the opportunity though!		

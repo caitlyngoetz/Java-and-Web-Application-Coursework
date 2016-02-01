@@ -1,0 +1,60 @@
+************************
+*Project 3/ RandomWalk
+*CompSci 121
+*March 18, 2014
+*Caitlyn Goetz
+************************
+OVERVIEW:
+	The program takes input from the user to create a grid and have the program walk from
+	one corner to the farther corner of the grid.
+
+INCLUDED FILES:
+	*RandomWalk.java - creates the methods for the walking.  It tells it to step and holds
+	the values.
+	*RandomWalkTest.java - gets input from user and sends it to RandomWalk.java.
+	*RandomWalkGUI.java - creates the JPanel/JFrame so that the walking is visualized.
+	*GridMap.java - Animates the movement of a point on the grid.
+	*README - this file.
+	
+BUILDING AND RUNNING:
+	All project files should be in the same directory.
+	From the directory containing the .java source code, compile the programs:
+		$ javac RandomWalk.java
+		$ javac RandomWalkTest.java
+		$ javac RandomWalkGUI.java
+		$ javac GridMap.java
+	
+	Run the programs from the directory containing the RandomWalk.class:
+		$ java RandomWalkTest
+		$ java RandomWalkGUI
+		
+PROJECT DESIGN NOTES:
+	RandomWalkGUI.java starts by extending a JPanel that has a grid based on the users
+	input.  The grid then follows a random path also stimulated by the input.  It steps
+	one coordinate at a time, in the positive x direction or the negative y direction.
+	Since it is random, it will follow a new path every time.
+	
+	RandomWalkTest.java asks the user for input on the grid size and the seed which will
+	determine the size of the grid.  The input will be transfered into RandomWalk.java 
+	where the stepping will happen and the coordinates will be saved, every step, in
+	an ArrayList.  It also checks to make sure the stepping stays on the said grid.
+	
+TESTING:
+	I tested the program throughout once I got to a point where I could test it.  Once
+	I had officially finished it I tested it using Onyx with all sorts of combinations
+	of grid sizes and seeds.
+	
+DISCUSSION:
+	I had a hard time with all the ArrayLists and the if statements.  However, my 
+	program handles bad input very well.  I have if statements and loops testing for
+	bad input throughout.  Making sure the input is only a positive grid number and the
+	seed is a number that is either equal to or greater than zero.  I had to get help from
+	the lab Tutors but they did a very good job of explaining it so I feel like I got a 
+	good understanding of what is happening in the program.  There was several things that
+	I was taught that we haven't gone over such as a StringBuilder but now I find it very
+	useful.
+	
+EXTRA CREDIT:
+	I didn't attempt to do any extra credit since I didn't feel like I had enough time
+	to perfect it due to the fact that I will be gone during Spring Break.  But this was
+	a fun project.

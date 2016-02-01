@@ -1,0 +1,71 @@
+Project 1
+CompSci 121
+20th Feb, 2014
+Caitlyn Goetz
+
+PROJECT OVERVIEW:
+
+This Java application displays an animated semi-truck that travels down the road toward the 
+right until it goes off the page and then reappears on the left.  It also includes an 
+orange head at the bottom with blue eyes and a pointed nose.  Included is the text "Look Out!!!"
+on the top of the screen.  All of the objects in the animation scale when the screen is resized.
+
+INCLUDED FILES:
+
+	*README - this file
+	*TrafficAnimatation.java - source code
+
+BUILDING AND RUNNING:
+
+All project files should be in the same directory
+
+From the directory containing the .java source code, compile the program:
+	$ javac TrafficAnimation.java
+	
+Run the program from the directory containing TrafficAnimation.class:
+	$ java TrafficAnimation
+	
+The program will then run itself and the image with animations will appear on screen.
+
+PROJECT DESIGN NOTES:
+
+The program starts by extending the JPanel by creating anchor points and sizing the screen for
+the animations to appear in.  Then it goes into its Graphic Component called canvas.  It finds
+its own width and height so that the programmer can easily find those values in future methods.
+Then the program reads the background color.  In this case it builds the middle as a gray road
+and the outer edges as green "grassy" areas.  It also draws a rectangle to substitute for the 
+yellow lines in the middle of roads.  
+
+Then it calculates the positions of the objects so that the program knows where all the animations
+are.  Then the program draws and fills rectangles and ovals with given sizes and colors to create
+the animations of the semi "car", trailer, wheels, window and door handle.  It then calls a method
+to create the "title" on the top of the screen, in this case "Look Out!!!."  It assigns the text 
+the color orange.  After that it continues through to create the avatar, which includes three ovals
+and one arc to create a head, eyes and nose.  The eyes and nose are assigned to be a navy blue while
+the head is more of an orange color.
+
+After this, the program doesn't need to create anything more but it looks through to see the size of
+the panel and then tells the program to run and repaint, giving the truck the motion of moving to 
+the right.
+
+TESTING:
+
+I tested the program throughout its development.  Everytime I altered something or created a new
+object, I would test it to make sure the object was in the right spot and that everything was 
+behaving appropriately.  My program handles bad input well, because the only input it recieves is 
+the command to run.  There are no known issues remaining in the program except for maybe it could
+wrap around the screen better.
+
+DISCUSSION:
+
+I had a hard time getting a handle on how to scale the objects and make sure they were going to 
+appear in the right space.  This was easily fixed with more practice and toward the end I was 
+fairly good at it.  That is the thing I had the most trouble with.  I researched how to make 
+custom colors and I used the link provided to find a good template for it.
+
+EXTRA CREDIT:
+
+I didn't get the extra credit all the way but I was able to get the wrapping most of the way.
+
+
+

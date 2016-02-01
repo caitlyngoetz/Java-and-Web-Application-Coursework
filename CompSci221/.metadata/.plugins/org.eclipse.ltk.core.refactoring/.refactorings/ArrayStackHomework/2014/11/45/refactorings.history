@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;ArrayStackHomework/src/TestMVPalidromeFinder.java&apos; to &apos;TestMVPalindromeFinder.java&apos;" description="Rename resource &apos;TestMVPalidromeFinder.java&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/TestMVPalidromeFinder.java" name="TestMVPalindromeFinder.java" stamp="1415390872803" updateReferences="true"/>
+</session>

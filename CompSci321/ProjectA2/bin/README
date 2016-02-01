@@ -1,0 +1,66 @@
+*******************************************************
+*Project: Lab Assignment 2: CPU Scheduling Simulation
+*Class: CS 321-001
+*Date:  February 13, 2015
+*Name:  Caitlyn Goetz
+*******************************************************
+
+OVERVIEW:
+
+	This program simulates a CPU Scheduling program allowing time to be incremented
+	and the simulation to run without screwing up real computers.
+
+INCLUDED FILES:
+
+	*CPUScheduling.java - simulates the round robin CPU scheduling algorithm.
+	*Averager.java - keeps track of the number of processes in the simulation 
+					 and computes the average turn around time.
+	*ProcessGenerator.java - randomly generates processes with a given probability.
+	*Process.java - defines a process and uses compareTo method.
+	*Maxheap.java - defines a max-heap.
+	*PQueue.java - defines a priority queue using a max-heap.
+	*README - this file that describes the other files.
+
+BUILDING AND RUNNING:
+
+	From the directory containing the source files, in order to compile the 
+	type:
+			$ javac CPUScheduling.java
+		
+	After that you should be able to run the program by typing:
+			$ java CPUScheduling <maxProcessTime> <maxPriorityLevel> <timeToIncrementPriority>
+			<simulationTime> <processArrivalRate>
+			
+			Where maxProcessTime is the largest possible time units required to finish a process.
+			And maxPriorityLevel is the highest possible priority in this situation. And 
+			timeToIncrementPriority is the amount if a process didn't get any CPU time for this
+			timeToIncrementPriority time units, the process's priority will be increased by one.
+			And simulationTime is the total  time units for the simulation.  And lastly, the 
+			processArrivalRate is used to decide whether to generate a new process in each unit
+			of time.
+
+PROGRAM DESIGN:
+
+	This program takes in input for the command line and runs a CPU Scheduling
+	simulation on that input.  It builds a queue that stores the priority levels
+	and "implements" the programs based on what their levels are in relation to
+	each other and the max time that the program can run.  The program then prints
+	out what "second" each job happened on, what its timeRequired is and the priority 
+	of it.  As well as when a job finishes.	
+
+PROGRAM DEVELOPMENT AND TESTING DISCUSSIONS:
+
+	This program was extremely frustrating for me.  I didn't really understand what the
+	methods in each of the classes were suppose to do and how the program was suppose to
+	function.  Whether that was just lack of understanding on my part or if my brain didn't
+	think that the instructions gave enough detail.  I couldn't understand what the different
+	classes were suppose to do and what the methods were suppose to read in and do as well.  
+	I still don't fully understand how the program was suppose to be designed.  But besides
+	that it went as well as it could.  I wish that the methods were described better in the
+	original instructions.  Like I didn't really understand what the methods "query" or 
+	"update" were suppose to do so hopefully they are functioning well enough.  It did allow
+	me to meet some new friends when asking for help and advice.  So I guess that is good. :)
+
+EXTRA CREDIT:
+
+	Nope.

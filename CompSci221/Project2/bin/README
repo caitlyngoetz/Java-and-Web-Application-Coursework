@@ -1,0 +1,70 @@
+********************************
+*Project 2 Circuit Trace Search
+*CS 221 Section 2
+*October 14, 2014
+*Caitlyn Goetz
+********************************
+
+OVERVIEW:
+	This program takes a file with a matrix in it and then the program tries
+	to find the fastest route between one designated point in the file to another
+	designated point in the file.
+
+INCLUDED FILES:
+	*CircuitTracer.java  -  driver class that uses and algorithm to find the shortest path through the matrix
+	*Storage.java  -  stores elements of type T in either a stack or a queue
+	*CircuitBoard.java  -  represents a 2D circuit board as read in from a file
+	*TraceState.java  -  represents a search state including a potential path through the board
+	*InvalidFileFormatException.java  -  indicates a file formatting exception
+	*OccupiedPositionException.java  -  indicates when an attempt is made to move into an already occupied position
+	*README  -  this file that describes the program
+	
+BEFORE CODING:
+	The difference between using a Stack and using a Queue is the order of which you can access the information in the
+	storage.  For Stacks, you can only access the element on top.  So it "last in, first out," meaning that you can
+	only pop the top one off and you can't look at the other elements in the Stack.  For Queues, its "first in, first out."
+	So you can remove from one end and put element in the other.  Like the line at a gas station, cars go in one side and 
+	come out the other.  The number of search states isn't going to be affected by the use of either a Stack or a Queue.
+	The amount of elements that can fit into one or the other is also the same.  In my opinion the speed between the two 
+	didn't differ, but I believe that the queue would be faster to navigate when using with larger lists.  I don't think
+	either solution is better than the other, I think there will be times when one would be better to use than the other,
+	but the other would be more useful in another situation. The Big-Oh runtime for the search algorithm is O(n) because there
+	is only one loop and no nested if statements or loops.  The Big-Oh memory use is f(n)= 2n+9.The memory use is affected by 
+	the underlying structure because the Queue would be the easiest and less memory-usage way so the Stack would use more memory
+	in order to store all the stuff with the search algorithm because you would have to search through every element. 
+	
+BUILDING AND RUNNING:
+	All project files should be in the same directory.
+	From the directory containing the .java source code, compile the program:
+		$ javac CircuitTracer.java
+	Run the program from the directory containing CircuitTracer.java using a command line:
+		$   java CircuitTracer -q -c grid6.dat
+    This should run the search in console mode using the board defined in grid6.dat, and use a queue for the search
+
+PROGRAM DESIGN:
+	Some of the code was provided to us so I only had to fill in some of the blanks.  To start, the Storage.java is a 
+	class which stores the information in either a stack or a queue so that it can be called upon later.  So it provides
+	several different constructors and methods that are used to get the information out of Storage.java, such as retrieve and
+	remove.  The TraceState.java is another storage-like class.  This is where the circuit board is sent so that the program
+	could retrieve information about it such as storing the points that are in the trace to the finish.  CircuitBoard.java actually
+	stores the board information such as where the starting and ending positions are and where the parts of the board that the trace
+	can't go are contained.  Both the OccupiedPositionException.java and the InvalidFileFormatException.java are classes that hold 
+	what the two exceptions are suppose to throw in certain situations.  The CircuitTracer.java class is the most used one.  It is the
+	class that actually goes through and sees where the trace can actually go at a certain time and it stores the paths already
+	taken and compares them to each other until it finds the shortest path or more than one paths that are the same length.  
+	
+
+TESTING AND DISCUSSION:
+	I was mostly unable to test this program until it was completely written.  I then used the given files
+	with sample circuit boards to test my program.  I had a hard time in the beginning with that because 
+	I forgot to add some of the cardinal directions in when I was copying and pasting.  So the program would
+	print out copies of the shortest paths multiple times instead of just once.  I also had a problem with
+	program actually outputting my results in the beginning.  But after about an hour with the tutor, I was able 
+	to get it under control and working well.  Other than that I thought this project went fairly smoothly
+	as long as I kept heading in the right direction and didn't make many mistakes (which happened more than
+	I will admit to)!  Other than the simply mistakes I was able to work through this project quickly and I am
+	happy that the GUI was part of the extra credit and not a graded portion because it would have taken me more
+	time to get that working than the time I have/had.
+
+EXTRA CREDIT:
+	No extra credit was attempted.

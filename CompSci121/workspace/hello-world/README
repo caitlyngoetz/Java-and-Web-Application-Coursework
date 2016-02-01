@@ -1,0 +1,25 @@
+Caitlyn Goetz  CS 121-003
+
+I had a problem getting it to say something different than "Hello World." Then I figured out you need to save it in Eclipse
+in order to get it to compile in the Konsole.
+Changing things in the program:
+Changing the header name: it gave me the "public type hello must be defined in its own file."  I think this means that the
+name of the project and the name of the new class has to match that way the class knows what project it belongs to.
+Remove a semicolon: It tells me that I need to insert a ";" to complete the BlockStatement.  The semicolon tells the program
+that that is the end of the line so without it, I guess the computer gets lost.
+Remove a curly bracket: its says that the bracket is used to complete the Class Body, meaning that the brackets let the 
+computer know when the class is done.
+Removing a quote: It lets me know that the "string literal is not properly closed" So the quotations let the computer know 
+what string to print and where it begins and ends
+Changing main to Main: It didn't give me a error message but it did highlight the Main and I think that it wanted me to 
+enter a string.
+Taking out a ) at the end of the string line: It gave me an error message saying that I needed the final ) to complete the 
+Expression.  Again I think this is needed to let the computer know when you are done with the message and what it should 
+print.
+Removed "void": The error message said that the "void" is the return type for the method.  So the void tells the program 
+what it should return.
+
+Making my own class (Quote.java)
+A problem I kept running into was forgetting to put the semicolon at the end of the lines.  I didn't really run into any 
+other problems in Eclipse.  I have a little bit of prior experience with it so I know the basics.  I also did not have any 
+problems compiling and running it in the Konsole.

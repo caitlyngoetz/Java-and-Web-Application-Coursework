@@ -1,0 +1,73 @@
+Project Number 2 / Playlist
+CompSci 121
+March 5, 2014
+Caitlyn Goetz
+
+OVERVIEW:
+	This program take input in the form of a title of a song, the artist, the 
+	playtime (formatted like "##:##") and the file name.  It takes the input
+	and compares the playtime to figure out the average playtime and it 
+	figures out which one is closest to 4 minutes.  It then outputs a table
+	that has the data in order from smallest playtime to fastest playtime.
+	
+	INCLUDED FILES:
+		1. PlayList.java - This is where the main code is written
+		2. Song.java - this keeps the songs with their respected data
+		3. input.txt - this is a list of sample songs for easy entry into
+		the program.
+		4. README - this is this document
+		
+	BUILDING AND RUNNING:
+		All project files should be in the same directory.
+		
+		From the directory containing the .java source code, compile the program:
+		$ javac PlayList.java
+		
+		Run the program from the directory containing the PlayList.class and use
+		the input.txt file for input:
+		$ java PlayList < input.txt
+		
+		The program will then run itself and the output will appear on the screen.
+		
+	PROJECT DESIGN NOTES:
+		The project starts by asking for input from the user (if the input.txt
+		file is used the user will not see this step for the data is inputed 
+		without the user having to input every letter).  It asks three times
+		for a title, an artist, the playtime and the filename of each song.
+		That information then causes the program to create a Song object for 
+		each of the songs.
+		
+		Then the program finds the average playtime between the three songs. 
+		It does this by adding up all of the song's playtimes (in seconds) and 
+		dividing by three.  It then outputs a string saying the average playtime
+		rounded to two decimal places.
+		
+		Then the program finds the song with the playtime that is closest to 
+		4 minutes or 240 seconds.  It does this by using three "if" statements 
+		and the song's playtimes (in seconds). After it finds out which one is 
+		closest it outputs a string say which song is closest to the time set. 
+		
+		Then the program has to find out which song is the shortest, middle-est and
+		largest in order of playtime.  It does this using six "if" statements that
+		compare the playtimes, in seconds, to each other and then outputting the
+		songs in order of shortest to fastest with a border and columns. 
+		
+	TESTING:
+		I tested the program throughout development.  Every time I created a new 
+		section of text, making song objects, finding averages, etc.  Once I made 
+		sure that section of the project worked I would move onto the next part.
+		The program handles input well once I got it set up to make the Song 
+		objects but I had a difficult time making it output correctly.  However,
+		there are no known issues remaining in the program.
+		
+	DISSCUSSION:
+		I had a hard time getting it to order the songs by playtime while still
+		getting the program to recognize which songs went with which playtimes.
+		After I figured out how to use the "if" statements with the toString() 
+		methods, I was on my way.  I was able to figure out how to work the toString()
+		method by doing research and asking the lab TA's.
+		
+	EXTRA CREDIT:
+		I did not attempt any extra credit on this program.
+		
+		

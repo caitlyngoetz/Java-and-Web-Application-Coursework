@@ -1,0 +1,99 @@
+**************************************
+*Project 3 - DoubleLinkedList
+*CompSci 221-2
+*November 14, 2014
+*Caitlyn Goetz
+**************************************
+
+OVERVIEW:
+	The program makes a double linked list so that the elements/nodes can be accessed from both ends, coming
+	from the left and from the right.  This way the list can run both ways and it will hopefully cut down on
+	the amount of runtime used for some methods compared to the single linked list and the array linked list.
+
+INCLUDED FILES:
+	The following files should all be contained in the same directory:
+	
+		*DoubleLinkedList.java - this file holds the implementation of all the ADT's allowing the program to run and 
+							 output data.
+		*DoubleLinkedListTest.java - this program contains the test that I have written to test my code.
+		*DoubleLinkedListADT.java - this program is directly implemented in the DoubleLinkedList.java so that it knows
+							  what methods to implement.
+		*ElementNotFoundException.java - this program holds the code that lets the program recognize an element that is
+										not in the certain list
+		*EmptyCollectionException.java - this program holds the code that lets the program throw an exception if the
+									collection is empty.
+		*IndexedADT.java - this code is implemented by the DoubleLinkedListADT so that it knows what methods to include.
+		*LinearNode.java - this code is included so that the DoubleLinkedList knows what a node is and is able to use one.
+		*ListADT.java - this code is implemented by the DoubleLinkedListADT so that it knows what methods to include.
+		*ListIterator.java - this code is included so that the DoubleLinkedList can have an iterator that runs through each element.
+		*UnorderedListADT - this code is implemented by the DoubleLinkedListADT so that it knows what methods to include.
+		*README - this file.
+
+BUILDING AND RUNNING:
+	The command for compiling this program is:
+			$ javac DoubleLinkedListTester.java
+			
+	The command for running the program is:
+		$ java DoubleLinkedListTester
+	
+PROGRAM DESIGN:
+	The purpose of this project is to write a double linked list that works without wrapping code that is already written for
+	the linked list (to create our own).  The DoubleLinkedList uses linear nodes to store information about every element that
+	is in the list, such as the elements before and after it and the element that that node contains.  With this Double Linked
+	List, we can do several things to the list.  Such as, add to the front, remove the first, remove the last, remove an element
+	at a specific index, remove just a specific element, add to the rear, add after an already created method.  We can do this by
+	setting what the node points at for its previous and its next, thus rearranging the order to add or remove elements.  All of
+	the operations listed are done by doing just that.  The DoubleLinkedList also uses an iterator to move through the elements.
+	This way we can detect changes and make changes in the list.  The DoubleLinkedList implements the DoubleLinkedListADT which
+	in turn implements the UnorderedListADT, the IndexedListADT and the ListADT, thus giving the DoubleLinkedList all of the methods
+	and operations that those lists have.
+
+PROGRAM DEVELOPMENT AND TESTING:
+	For my development and testing, I didn't fully understand how we were suppose to write the iterator or really what the iterator
+	does. Therefore, I took my unordered list tests and made them better so that they looked nicer and that allowed me to debug better.
+	I then went about implementing the DoubleLinkedList methods and making sure they were passing my tests.  I had real issues with the
+	removeLast method for some reason.  I kept getting a null pointer exception so I figured out it was the issue i was having removing
+	the last one and making sure that it wasn't being pointed at and it was pointing to nothing.  Once I got that fixed everything else
+	seemed to flow into place.  Then I started trying to understand and write the code to implement the iterator methods.  Once I understood
+	what the iterator was suppose to be doing then I understood what my tests were suppose to test for.  So I did test implemented coding
+	for the first part and did it the other way around for the iterator part.
+
+DISCUSSION:
+	Day 1 - Captain's Log... It has been a productive day.  Much has been done in the way of implementing the
+	methods not associated with the iterator.  I have spruced up the unordered list tests so that they now work
+	satisfactory.  I have most of them passing now with the tests that I have implemented.  A snag was hit
+	around 1500 hours.  Bugs were discovered on board and the exterminator couldn't find them.  After several
+	heated words spoken, the bugs were found and fixed.  They were found hiding in the Null Pointer Compartment
+	on the first level (removeLast) from there they were traced up to the bridge (addToFront) were the testing
+	found that the Mr.Spock(the head pointer) was pointing at null.  He was reprimanded and pointed in the right
+	place.
+	
+	Day 2 - Captains Log... Ran into the asteroid belt in the Unmapped Territories.  Our left flank was damaged by 
+	an Iterator asteroid.  We don't know how it works yet but I have many of the engineers and red shirts working on 
+	it.  Once we get our come back implemented all will be well.  However, it does seem like my engineers are unsure
+	about what the Iterator asteroids are suppose to do, so they are consulting with our members back on planet Earth.
+	Once we figure out how to get our ship flying again and the Iterator Asteroids taken care of, we hope to fly into 
+	Test implementing quadrant and try our luck there.
+	
+	Day 3 - Captains Log... The ship is still stranded in the Asteroid Belt and my engineers were unable to contact 
+	Earth yesterday.  There is hope however that the people on earth will be available at noon.  Also there has been
+	some kind of white powder heavily fallen from the sky.  The engineers seem highly distracted by it and my attempts
+	to restrain their enthusiasm have not worked as much as I would like.  We need their 100% attention if we are going
+	to make it to the Testing Quadrant by the deadline.
+	
+	Day 3.5 - Captains Log...The Iterator Asteroid belt conquered us in the end.  It was only after a long and grueling fight that the engineers
+	finally got the hull of the ship unattached from the asteroid.  However, it was with significant damage to the ship.  As we slowly float toward
+	the Cloud of Thanksgiving, we are hoping to make it there with a ship still intacted.  It is a sad and tired day.  I have ordered the crew and
+	myself to get into their hibernation chambers for the remainder of the trip.  This way I hope to save what is left of their brains from the
+	severe beating they took today. 
+	
+	Day 4 - Captains Log...The Almighty Overlord (Professor Vail)  found that our ship was running around in a infinite time loop.  During one of the
+	loops, he was able to contact us.  We still do not know how long we have been in this paradox.  My engineers set about fixing it.  After several tense
+	hours, we finally located it in the engine room, compartment Set Index.  Once we got that back up and running things seemed to go smoothly.  Although
+	one of our engineers is now running around screaming that he saw some giant dragon fly through the wall.  We think the stress has broken his mind...sad.
+	Anyway, we hope that the Almighty Overlord will be happy with our changes and that he will be able to see our reports fully this time. 
+
+SOURCES
+	The only sources that were used were previous classes that I had written (mainly AbstractArrayList.java and 
+	SingleLinkedList.java) as well as help from the tutors in the Meta Geek Lab and working out problems with
+	friends on the board to understand the mental picture better. 

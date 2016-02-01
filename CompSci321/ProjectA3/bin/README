@@ -1,0 +1,64 @@
+*******************************
+*Project: Lab Assignment 2: Hashtables
+*Class: CompSci 321-
+*Date: April 3, 2015
+*Name: Caitlyn Goetz
+********************************
+
+OVERVIEW:
+
+	This program allows the user to specify how and with what a hash table will be created and run.  And then the different 
+	kinds of hashing (linear or double) will be compared.
+
+INCLUDED FILES:
+
+	*HashObject.java - This file makes a hash object to be inserted into the hash table
+	*HashTable.java - This file makes the hash table an keeps it running as it is suppose to
+	*HashTest.java - This is the driver file that reads in what the user wants and then calls the corresponding methods
+	*README - this file
+
+BUILDING AND RUNNING:
+	
+	From the directory containing the source files, in order to compile type:
+		$ javac HashTest.java
+	
+	After that you should be able to run the program by typing:
+		$ java HashTest <input type> <load factor> [<debug level>]
+		
+		The input type should be 1, 2, or 3 depending on whether the data 
+		generated is using java.util.Random, System.currentTimeMillis() or 
+		from the file word-list, respectively.
+		The load factor should be a number between 0 and 1
+		The debug level is optional and allows the user to format the output
+		to their specific preferences:
+		debug = 0 − print summary of experiment
+		debug = 1 − print out the hash table at the end
+		debug = 2 − print the number of probes for each new insert
+		
+
+
+PROGRAM DESIGN:
+
+	This program reads in agruments that the user provides. These are checked in the HashTest class (driver class) and also contains most of the commands for actions.
+ 	It uses the information given to make a hashtable filled with random words, time increments or words and then it uses double hashing and linear hashing to populate 
+ 	the hashtable with hashObjects by passing information to the HashTable class and the HashObject class.
+
+PROGRAM DEVELOPMENT AND TESTING DISCUSSION:
+
+	//This part was written the week before Spring Break
+	This was one of the easier projects for this class in the way of total understanding exactly what the program needs
+	to run and what we are suppose to be doing.  Which is very nice after the last project.  I started off by setting up
+	the print lines so that the output would be what I wanted it to look like and then I then moved on to writing the 
+	objects and the table so that they would work with the driver class.  
+	One of the problems that I did run into was that the instruction for the assignment were a little vague in places.
+	It would have been helpful to at least see the methods that were expected (skeleton class).  Or at least a little 
+	direction on what was suppose to be involved in this program.
+	However, I am finding this project surprisingly easy despite that and hopefully I am doing this right and not just
+	going off into my own little world of make-believe-coding!
+
+	//This part is written now upon submitting the program
+	This turned out to be a hard project.  I have most of the code written but have no idea how to make it work together.
+	There should have been a skeleton code so that I could have understood what we needed better.  I have spent well over 24 
+	hours working on this program and now have ran out of time to complete.  I have most of it working, but there are still
+	a few issues.  The random number generator takes forever and a day to run.  I am hoping that since I am turning it in before 
+	10:30 am the day after the due date that I will only get 10% taken of for the late-ness.  I apologize for the state it is in.  :(

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;UnorderedListTester&apos; to &apos;ListTester&apos;&#x0A;- Original project: &apos;ArrayList&apos;&#x0A;- Original element: &apos;UnorderedListTester&apos;&#x0A;- Renamed element: &apos;ListTester&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;UnorderedListTester&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{UnorderedListTester.java[UnorderedListTester" matchStrategy="1" name="ListTester" qualified="false" references="true" similarDeclarations="false" stamp="1413309215372" textual="false" version="1.0"/>
+</session>

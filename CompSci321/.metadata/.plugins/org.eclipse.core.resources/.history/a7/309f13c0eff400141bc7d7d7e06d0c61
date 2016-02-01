@@ -1,0 +1,27 @@
+********************************
+* Project: A4 - Bioinformatics
+* Class: CS 321-001
+* Date: May 3, 2015
+* Name: Caitlyn Goetz
+* Partner: Sydney Crabtree
+********************************
+
+OVERVIEW:
+
+INCLUDED FILES:
+	
+	*BTree.java - Represents a BTree 
+	*BTreeIO.java - Represents a BTreeIO
+	*BTreeNode.java - Represents a single node in the BTree
+	*Cache.java - Represents a cache
+	*GeneBankCreateBTree.java - Creates a BTRee out of a file from a GeneBank
+		-Includes an inner class called FileParser that parses through the files.
+	*GeneBankSearch.java - Searches a BTree file for DNA sequences
+	*TreeObject.java - Stores a DNA subsequence in the BTree
+	*README - This file
+
+BUILDING AND RUNNING:
+
+PROGRAM DESIGN:
+
+PROGRAM DEVELOPMENT AND TESTING DISCUSSION:

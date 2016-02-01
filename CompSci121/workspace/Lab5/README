@@ -1,0 +1,18 @@
+Caitlyn Goetz
+CS 121 Lab 003
+February 20, 2014
+
+The Bouncy Ball lab was somewhat difficult but fun at the same time.  I had a hard time figuring 
+out the max and mins for the boundry and understanding that concept was difficult but once
+it was explained I understood it fairly easily.  I also had a difficult time getting the left and 
+top boundries to work.  But after seeking help I was able to understand that the boundry is just
+the radius.  This is super easy to understand now and I was overthinking it to begin with.  
+I was able to complete Part 1 of this lab fairly easily.
+
+Part 2 was also fairly easy once I understood the boundry formula since it pertains to a lot of
+the bullets in the second part.  And I am fairly good at random numbers now.
+
+Part 3 was the most difficult of this lab.  I had a hard time figuring out how to get the radius
+and the color to change incrementally.  But after I saw one of them done (just like the xDeltas 
+and the yDeltas) I was able to further grasp the method for figuring out how to do it on the 
+color and radius.

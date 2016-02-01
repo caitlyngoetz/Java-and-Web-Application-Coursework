@@ -1,0 +1,90 @@
+
+public interface ListIterator<T> {
+
+	/**
+	 * Inserts the specified element into the list 
+	 * @param element
+	 * @throws UnsupportedOperationException if the add method is not supported by this list iterator
+	 * @throws ClassCastException if the class of the specified element prevents it from being added to the list
+	 * @throws IllegalArgumentException if some aspect of this element prevents it from being added to this list
+	 *  @author cgoetz
+	 */
+	public void add(T element){
+		
+	}
+	
+	/**
+	 * Returns true if this list iterator has more elements when traversing the list in the forward direction
+	 * @return
+	 * @author cgoetz
+	 */
+	public boolean hasNext() {
+		return true;
+	}
+	
+	/**
+	 * Returns true if this list iterator has more elements when traversing the list in the reverse direction
+	 * @author cgoetz
+	 * @return
+	 */
+	public boolean hasPrevious() {
+		return true;
+	}
+	
+	/**
+	 * Returns the next element in the list and advances the cursor position
+	 * @throws NoSuchElementException when there iteration has no next element
+	 * @author cgoetz
+	 * @return
+	 */
+	public T next(){
+		return null;
+	}
+	
+	/**
+	 *Returns the index of the element that would be returned by a subsequent call to next().
+	 * @return
+	 * @author cgoetz
+	 */
+	public T nextIndex() {
+		return null;
+	}
+	
+	/**
+	 * Returns the previous element in the list and moves the cursor position backwards.
+	 * @throws NoSuchElemetnException if iteration has no previous element
+	 * @author cgoetz
+	 * @return
+	 */
+	public T previous(); //{
+		//return null;
+	//}
+	
+	/**
+	 * Returns the index of the element that would be returned by a subsequent call to previous().
+	 * @author cgoetz
+	 * @return
+	 */
+	public T previousIndex() {
+		return null;
+	}
+	
+	/**
+	 * Removes from the list the last element that was returned by next() or previous().
+	 * @throws UnsupportedOperationException if the remove operation is not supported by list iterator
+	 * @throws IllegalStateException if neither next nor previous have been called, or remove or add have been called after the last call to next or previous
+	 *@author cgoetz 
+	 */
+	public void remove() {
+		}
+	
+	/**
+	 * Replaces the last element returned by next() or previous() with the specified element
+	 * @throws UnsupportedOperationException if the set operation is not supported by list iterator
+	 * @throws ClassCastException if the class of the specified element prevents it from being added to the list
+	 * @throws IllegalStateException if neither next nor previous have been called, or remove or add have been called after the last call to next or previous.
+	 * @author cgoetz
+	 */
+	public void set() {
+	}
+}

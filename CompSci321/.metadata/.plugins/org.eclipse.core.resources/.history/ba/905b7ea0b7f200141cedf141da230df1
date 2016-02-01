@@ -1,0 +1,40 @@
+import java.util.ArrayList;
+
+/**
+*
+* @author scrabtre
+* @author cgoetz
+*
+*/
+
+public class BTreeNode {
+	public ArrayList<TreeObject> keys;
+	public ArrayList<Integer> children;
+	public int parent;
+	public int index;
+	public int maxKeyCount;
+	public boolean root;
+	public boolean leaf;
+	public int degree;
+	
+	public BTreeNode(int degree, boolean root, boolean leaf, int index){
+		this.degree = degree;
+		this.index = index;
+		this.root = root;
+		this.leaf = leaf;
+		if(this.root)
+			parent = -1;
+		
+		maxKeyCount = (degree - 1) * 2;
+		keys = new ArrayList<TreeObject>(maxKeyCount);
+		children = new ArrayList<Integer>(maxKeyCount + 1);
+	}
+	
+	public boolean isFull(){
+		return keys.size() == maxKeyCount;
+	}
+	
+	public int compareTo(BTreeNode tObj){
+		return index - tObj.index;
+	}
+}

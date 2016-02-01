@@ -1,0 +1,53 @@
+*****************************************
+* Project: A1 - 2 Level Cache Algorithm
+* Class: CompSci 321-001
+* Date: January 23, 2015
+* Name: Caitlyn Goetz
+*****************************************
+
+OVERVIEW:
+	This program creates caches that will hold elements that have been recently searched 
+	for.  So if an element is hit, it moves to the top of the caches and kept until the
+	cache is full or it is no longer needed.
+
+INCLUDED FILES:
+	
+	*cache.java - this is the file that creates the cache and runs the operations on it
+	*README - this is this file
+	*test.java - this file runs cache.java and tests to make sure that it runs correctly
+
+BUILDING AND RUNNING:
+
+	From the directory containing the source files, in order to compile the program typ:
+		$ javac test.java
+		
+	After that you should be able to run the program by typing:
+		$ java test
+
+PROGRAM DESIGN:
+
+	This program reads in words one at a time and with each word it checks it against
+	the words already in the first cache.  If it finds it then it moves that word to
+	the top of the cache.  If there is a double level cache, then the program moves the
+	word that is also in the double level cache to the top of that cache.  If it is a 
+	two level cache and the word is not found in the first level then the program will
+	search for the word in the second level cache and if it finds it it will move it to
+	the top of that cache and add it to the top of the first level cache.  If it does not 
+	find it in the second level cache then the program will add the word to the top of
+	both of the caches.  This will continue until the file no longer has any next elements
+	and then the program will print out the results of the hit ratio and references accessed.
+
+PROGRAM DEVELOPMENT AND TESTING DISCUSSION:
+
+	The only problems I had with writing this program was getting back in to the proramming 
+	groove after the holiday.  I also had issues with understanding some of the command line
+	arguements that we were suppose to be reading in and how to deal with those.  I never had
+	to check if something was inputed in the right spot and I didn't know how to acces just the
+	one argument when I wanted either the file or thesize of the caches.  Other than that
+	I thought it went okay.  The whole idea of caches was a little abstract but I think I got a 
+	handle on it now.  I also had issues with my command line agruements not working.  I couldn't
+	get the file to read in very well.  It kept throwing a FileNotFoundException and I had a 
+	difficult time figuring out why.  But then I got the file in the right directory and it
+	was all good.  My numbers were not working well and then I figured out that I had to make my
+	variables doubles in order to get them to work.  After that everything went smoothly.  My 
+	numbers are slightly off from the example but I couldn't get them to go any closer.

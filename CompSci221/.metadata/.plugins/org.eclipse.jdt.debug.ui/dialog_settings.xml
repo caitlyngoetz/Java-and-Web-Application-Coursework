@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="conditionHistory">
+		<item value="1" key="conditionHistoryEntryCount"/>
+		<item value="lookahead == &apos;y&apos;" key="conditionHistoryEntry_0"/>
+	</section>
+	<section name="org.eclipse.jdt.debug.ui.MAIN_METHOD_SELECTION_DIALOG">
+		<item value="true" key="ShowStatusLine"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0A;&lt;History&gt;&#x0A;&lt;historyRootNode&gt;&#x0A;&lt;infoNode&gt;=HomeworkAlgorithms/src&amp;lt;{BieberSortTest.java[BieberSortTest&lt;/infoNode&gt;&#x0A;&lt;infoNode&gt;=HomeworkAlgorithms/src&amp;lt;{ConsecutivePairsTest.java[ConsecutivePairsTest&lt;/infoNode&gt;&#x0A;&lt;infoNode&gt;=Project2/src&amp;lt;{CircuitTracer.java[CircuitTracer&lt;/infoNode&gt;&#x0A;&lt;infoNode&gt;=ArrayStackHomework/src&amp;lt;{TestMVPalindromeFinder.java[TestMVPalindromeFinder&lt;/infoNode&gt;&#x0A;&lt;/historyRootNode&gt;&#x0A;&lt;/History&gt;" key="History"/>
+		<section name="DialogBoundsSettings">
+			<item value="600" key="DIALOG_WIDTH"/>
+			<item value="1|Sans Serif|10.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+			<item value="500" key="DIALOG_HEIGHT"/>
+			<item value="100" key="DIALOG_X_ORIGIN"/>
+			<item value="-13" key="DIALOG_Y_ORIGIN"/>
+		</section>
+	</section>
+</section>

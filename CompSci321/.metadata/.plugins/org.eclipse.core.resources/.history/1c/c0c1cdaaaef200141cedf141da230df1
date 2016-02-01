@@ -1,0 +1,161 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+
+public class GeneBankCreateBTree {
+
+	static int debug = 0;
+	static int degree;
+	static int seqLength;
+	static String fileName;
+	static int cacheSize;
+	static String error = "Usage: java GeneBankCreateBTree <degree> <gbk file> <sequence length> <cache size> [<debug level>]";
+
+	//java GeneBankCreateBTree <degree> <gbk file> <sequence length> [<debug level>]
+	public static void main(String[] args) throws FileNotFoundException {
+
+		if(args.length != 2 && args.length != 3){
+			System.out.println("Incorrect # of arguments.\n\t" + error);
+			System.exit(0);
+		}
+
+		degree = Integer.parseInt(args[0]);
+		fileName = args[1];
+		seqLength = Integer.parseInt(args[2]);
+		cacheSize = Integer.parseInt(args[3]);
+
+		if(degree == 0) {
+			degree = 4096;
+		}
+		if(seqLength < 1 && seqLength > 32){
+			System.out.println("sequence length needs to be between 1 and 31 (inclusive).\n\t" + error);
+			System.exit(0);
+		}
+
+		if(args.length == 3){
+			debug = Integer.parseInt(args[4]);
+			if(debug != 1 && debug != 0){
+				System.out.println("debug level needs to be 1 or 0. \n\t" + error);
+				System.exit(0);
+			}
+		}
+		if(debug == 1){
+			System.out.println("BTree being put on dump file\n");
+		}
+		parseFile(degree, seqLength, cacheSize);
+		if(debug == 1){
+			debugMode(debug);
+		}
+
+	}
+
+
+	private static void debugMode(int debug2) {
+		try {
+			BTreeIO.inOrderTraversal(new File("dump.txt"), fileName);
+		}catch (IOException e){
+			System.out.println("Cannot open file, check permissions\n\t" + error);
+		}
+	}
+
+	private static void parseFile(int degree2, int seqLength2, int cacheSize2) {
+		try {
+			FileParser parser = new FileParser(seqLength2, new File(fileName));
+			int i = 0;
+			if(parser.hasNext(i)){
+				bTreeIO = new BTree(degree2, seqLength2, fileName + ".btree." + seqLength2 + "." + degree, parser.next(i), cacheSize, debug);
+				while((parser.hasNext(i)) && (i < parser.getStringLength())){
+					if(parser.next(i).toLowerCase().contains("n")){
+						i++;
+						//took out continue
+					}
+					else {
+						bTreeIO.BTreeInsert(parser.next(i));
+						i++;
+					}
+				}
+				bTreeIO.flushTree();
+			}
+			else {
+				System.out.println("No sequences were found\n\t" + error);
+			    System.exit(0);
+			}
+		} catch (FileNotFoundException e){
+			System.out.println("File was not found\n\t" + error);
+			System.exit(0);
+		}catch (IOException e){
+			System.out.println("IO Exception was caught\n\t" + error);
+			System.exit(0);
+		}
+
+	}
+
+	public class FileParser {
+		int seqLength;
+		File file = null;
+		BufferedReader bufferReader = null;
+		String parseLine = null;
+
+		public FileParser(int seqLength, File file) throws IOException {
+			this.seqLength = seqLength;
+			this.file = file;
+			parseFile();
+		}
+		public String parseFile() throws IOException {
+			try{
+				FileReader fileReader = new FileReader(file);
+				bufferReader = new BufferedReader(fileReader);
+				StringBuffer stringBuffer = new StringBuffer();
+				String temp = bufferReader.readLine();
+				boolean flag = false;
+
+				while(temp != null){
+					String[] stringArray = temp.split(" ");
+					for(String string : stringArray){
+						if(string.equalsIgnoreCase("ORIGIN")) {
+							temp = bufferReader.readLine();
+							flag = true;
+						}
+						if(string.equalsIgnoreCase("//")){
+							flag = false;
+						}
+					}
+					temp = temp.replaceAll("\\s", "");
+					//left out ^ in [^a-zA-Z]
+					temp = temp.replace("[a-zA-Z]", "");
+					if(flag == true){
+						stringBuffer.append(temp);
+					}
+				}
+				fileReader.close();
+				parseLine = stringBuffer.toString();
+			}
+			catch (FileNotFoundException e){
+				System.out.println("File not found: " + file + "\n\t" + error);
+				System.exit(0);
+			}
+			return parseLine;
+
+		}
+
+		public Boolean hasNext(int x){
+			boolean result = false; 
+			if(((parseLine.substring(x, x + seqLength)) != null) && (x + seqLength < parseLine.length())) {
+				result = true;
+			}
+			return result;
+		}
+
+		public int getStringLength() {
+			return parseLine.length();
+		}
+
+		public String next(int x) {
+			String seq = parseLine.substring(x, x + seqLength);
+			return seq;
+		}
+	}
+}

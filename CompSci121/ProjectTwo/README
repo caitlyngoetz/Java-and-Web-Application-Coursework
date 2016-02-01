@@ -1,0 +1,33 @@
+Project Number 2 / Playlist
+CompSci 121
+March 5, 2014
+Caitlyn Goetz
+
+OVERVIEW:
+	This program take input in the form of a title of a song, the artist, the 
+	playtime (formatted like "##:##") and the file name.  It takes the input
+	and compares the playtime to figure out the average playtime and it 
+	figures out which one is closest to 4 minutes.  It then outputs a table
+	that has the data in order from smallest playtime to fastest playtime.
+	
+	INCLUDED FILES:
+		1. PlayList.java - This is where the main code is written
+		2. Song.java - this keeps the songs with their respected data
+		3. input.txt - this is a list of sample songs for easy entry into
+		the program.
+		4. README - this is this document
+		
+	BUILDING AND RUNNING:
+		All project files should be in the same directory.
+		
+		From the directory containing the .java source code, compile the program:
+		$ javac PlayList.java
+		
+		Run the program from the directory containing the PlayList.class and use
+		the input.txt file for input:
+		$ java PlayList < input.txt
+		
+		The program will then run itself and the output will appear on the screen.
+		
+	PROJECT DESIGN NOTES:
+	

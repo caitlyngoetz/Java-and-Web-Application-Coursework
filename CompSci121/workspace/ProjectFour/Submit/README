@@ -1,0 +1,76 @@
+******************
+*Project 4
+*CompSci 121
+*11th April, 2014
+*Caitlyn Goetz
+******************
+
+PROJECT OVERVIEW:
+	
+	This program takes inputed text files and reads them individually while counting 
+	the amount of words, sentences and syllables in each file.  Then it outputs
+	the amount of words with syllables in them and the amount of words in the text.
+
+INCLUDED FILES:
+
+	*ProcessText.java
+		This program reads in the file and sends it to the FleschStatistics file
+	*FleschStatistics.java
+		This program checks for all of the information needed and outputs it
+	*FleschStatisticsInterface.java
+		This class is the outline for our program and calls the methods in our programs
+	*README (this file)
+
+BUILDING AND RUNNING:
+
+	All project files should be in the same directory
+	
+	From the directory containing the .java source code, compile the program:
+		$ javac ProcessText.java
+		
+	Run the program from the directory containing ProcessText.class:
+		$ java ProcessText
+	
+	You can then input the text file and it will run itself
+
+PROJECT DESIGN NOTES:
+
+	The program reads in a file and make sure that it exists and that it can be read.
+	The file is then passed from the ProcessText into the FleschStatistics class where 
+	the file is then read by a scanner and then read by another until we are left with 
+	just the words.  It then counts the words and uses the individual letters in the words 
+	to figure out how many syllables there are in each word, using the Flesch syllable rules.  
+	It also keeps track of how many syllables there are in each word and how long each of the
+	words are.  It then takes that information to make the Flesch index which will
+	then in turn give us the Flesch Grade.  The program then uses a toString() to output 
+	all of the information it has gathered from that file and then it does the same with
+	the next file and the next until it runs out of files to complete the program with.
+
+PROJECT DEVELOPMENT AND TESTING NOTES:
+	
+	I tested the program by using the test class built for us.  I split the project
+	up into sections that I could then test against the class provided.  Once I got
+	one section working I would move on to the other section and so on and so forth.
+	I also built my own test file so that I could check for certain things that I 
+	might run into like single vowels or consonants.  My program can handle by input
+	because it has a try, catch method in it which will check for exceptions and it
+	also checks to make sure that the file input really does exist and that it can
+	be read.  As far as I know there are no known issues or bugs remaining in this
+	program.
+	
+DISCUSSION:
+ 
+	This was a rather complex project.   The most difficult part was the syllable
+	counter.  I think this because it was also the longest/complex part.  It was 
+	difficult to get it all working at once especially when I would get one piece 
+	working and the get another piece working but in doing so I would "break" the 
+	first piece.  I had to research some of the array methods and stuff I could do
+	with the toString.  As well as with the file objects.  I think I have gotten really
+	good at toStrings and loops of all kinds (beside maybe the while loop because that
+	was not used a lot in this project.  
+
+EXTRA CREDIT:
+
+	I did not attempt any extra credit for this project.  By the time I got it working
+	properly without the extra credit, my brain had fallen out of my head and ran out
+	of the door. :)

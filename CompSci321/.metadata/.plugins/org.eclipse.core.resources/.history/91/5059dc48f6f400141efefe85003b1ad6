@@ -1,0 +1,102 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+/**
+*
+* @author scrabtre
+* @author cgoetz
+*
+*/
+
+public class GeneBankCreateBTree {
+
+	static int debug = 0;
+	static BTree bTreeIO;
+	static int degree;
+	static int seqLength;
+	static String fileName;
+	static int cacheSize;
+	static String error = "Usage: java GeneBankCreateBTree <degree> <gbk file> <sequence length> <cache size> [<debug level>]";
+
+	//java GeneBankCreateBTree <degree> <gbk file> <sequence length> [<debug level>]
+	public static void main(String[] args) throws FileNotFoundException {
+
+		if(args.length != 4 && args.length != 5){
+			System.out.println("Incorrect # of arguments.\n\t" + error);
+			System.exit(0);
+		}
+
+		degree = Integer.parseInt(args[0]);
+		fileName = args[1];
+		seqLength = Integer.parseInt(args[2]);
+		cacheSize = Integer.parseInt(args[3]);
+
+		if(degree == 0) {
+			degree = 4096;
+		}
+		if(seqLength < 1 && seqLength > 32){
+			System.out.println("sequence length needs to be between 1 and 31 (inclusive).\n\t" + error);
+			System.exit(0);
+		}
+
+		if(args.length == 3){
+			debug = Integer.parseInt(args[4]);
+			if(debug != 1 && debug != 0){
+				System.out.println("debug level needs to be 1 or 0. \n\t" + error);
+				System.exit(0);
+			}
+		}
+		if(debug == 1){
+			System.out.println("BTree being put on dump file\n");
+		}
+		parseFile(degree, seqLength, cacheSize);
+		if(debug == 1){
+			debugMode(debug);
+		}
+
+	}
+	
+	private static void debugMode(int debug2) {
+		try {
+			bTreeIO.inOrderTraversal(new File("dump.txt"), fileName);
+		}catch (IOException e){
+			System.out.println("Cannot open file, check permissions\n\t" + error);
+		}
+	}
+
+	private static void parseFile(int degree2, int seqLength2, int cacheSize2) {
+		try {
+			FileParser parser = new FileParser(seqLength, new File(fileName));
+			int i = 0;
+			if(parser.hasNext(i)){
+				bTreeIO = new BTree(degree2, seqLength2, fileName + ".btree." + seqLength2 + "." + degree, parser.next(i), cacheSize, debug);
+				while((parser.hasNext(i)) && (i < parser.getStringLength())){
+					if(parser.next(i).toLowerCase().contains("n")){
+						i++;
+						//took out continue
+					}
+					else {
+						bTreeIO.insert(parser.next(i));
+						i++;
+					}
+				}
+				bTreeIO.dumpTree();
+			}
+			else {
+				System.out.println("No sequences were found\n\t" + error);
+			    System.exit(0);
+			}
+		} catch (FileNotFoundException e){
+			System.out.println("File was not found\n\t" + error);
+			System.exit(0);
+		}catch (IOException e){
+			System.out.println("IO Exception was caught\n\t" + error);
+			System.exit(0);
+		}
+
+	}
+
+
+}

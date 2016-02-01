@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+
+public class ConvertToSeconds {
+
+	
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.print("Enter hours: ");
+		
+		int hours = scan.nextInt();
+		System.out.print(hours);
+
+	}
+
+}

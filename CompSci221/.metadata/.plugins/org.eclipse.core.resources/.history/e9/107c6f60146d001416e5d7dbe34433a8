@@ -1,0 +1,520 @@
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.ListIterator;
+import java.util.NoSuchElementException;
+
+public class DoubleLinkedList<T> implements DoubleLinkedListADT<T> {
+	private LinearNode<T> head, tail;
+	private int size, modCount;
+
+	public DoubleLinkedList() {
+		head = tail = null;
+		size = 0;
+	}
+
+	@Override
+	public void addToFront(T element) {
+		LinearNode<T> newNode = new LinearNode<T>(element);
+		if (size == 0) {
+			head = tail = newNode;
+		} else {
+			newNode.setNext(head);
+			head.setPrevious(newNode);
+			head = newNode;
+		}
+		modCount++;
+		size++;
+
+	}
+
+	@Override
+	public void addToRear(T element) {
+		LinearNode<T> newNode = new LinearNode<T>(element);
+		if (size == 0) {
+			head = tail = newNode;
+		} else {
+			tail.setNext(newNode);
+			newNode.setPrevious(tail);
+			tail = newNode;
+		}
+		modCount++;
+		size++;
+	}
+
+	@Override
+	public void addAfter(T element, T target) {
+		LinearNode<T> current = head;
+		boolean found = false;
+		while (current != null && !found) {
+			if (current.getElement().equals(target)) {
+				found = true;
+			} else {
+				current = current.getNext();
+			}
+		}
+		if (!found)
+			throw new ElementNotFoundException("DoubleLinkedList");
+		LinearNode<T> newNode = new LinearNode<T>(element);
+		if (tail == current) {
+			newNode.setPrevious(tail);
+			tail.setNext(newNode);
+			tail = newNode;
+
+		} else {
+			newNode.setNext(current.getNext());
+			current.getNext().setPrevious(newNode);
+			current.setNext(newNode);
+			newNode.setPrevious(current);
+		}
+		size++;
+		modCount++;
+
+	}
+
+	@Override
+	public T removeFirst() {
+		if (isEmpty())
+			throw new EmptyCollectionException("DoubleLinkedList");
+
+		LinearNode<T> oldHead = head;
+
+		if (size == 1) {
+			head = tail = null;
+		} else {
+			head = head.getNext();
+			head.setPrevious(null);
+		}
+		modCount++;
+		size--;
+		return oldHead.getElement();
+	}
+
+	@Override
+	public T removeLast() {
+		if (isEmpty())
+			throw new EmptyCollectionException("DoubleLinkedList");
+
+		LinearNode<T> oldTail = tail;
+
+		if (size == 1) {
+			head = tail = null;
+		} else {
+			tail = tail.getPrevious();
+			tail.setNext(null);
+		}
+
+		modCount++;
+		size--;
+		return oldTail.getElement();
+	}
+
+	@Override
+	public T remove(T element) {
+		if (isEmpty())
+			throw new ElementNotFoundException("DoubleLinkedList");
+		if (element == null) {
+			return null;
+		}
+
+		boolean found = false;
+		LinearNode<T> current = head;
+		LinearNode<T> currentPrevious = null;
+		LinearNode<T> currentNext = null;
+
+		while (current != null && !found)
+			if (element.equals(current.getElement()))
+				found = true;
+			else {
+				current = current.getNext();
+			}
+
+		if (!found)
+			throw new ElementNotFoundException("DoubleLinkedList");
+
+		currentNext = current.getNext();
+		currentPrevious = current.getPrevious();
+
+		if (size() == 1) { // only one element in the list
+			head = tail = null;
+		} else if (current.getElement().equals(head.getElement())) { // target
+																		// is at
+																		// the
+																		// head
+			head = current.getNext();
+			current.setPrevious(head);
+		} else if (current.getElement().equals(tail.getElement())) // target is
+																	// at the
+																	// tail
+		{
+			tail.setPrevious(tail.getPrevious());
+			tail.setNext(null);
+		} else { // target is in the middle
+			currentPrevious.setNext(currentNext);
+			currentNext.setPrevious(current.getPrevious());
+		}
+		size--;
+		modCount++;
+
+		return current.getElement();
+	}
+
+	@Override
+	public T first() {
+		if (isEmpty())
+			throw new EmptyCollectionException("DoubleLinkedList");
+		return head.getElement();
+	}
+
+	@Override
+	public T last() {
+		if (isEmpty())
+			throw new EmptyCollectionException("DoubleLinkedList");
+		return tail.getElement();
+	}
+
+	@Override
+	public boolean contains(T target) {
+		if (isEmpty())
+			throw new EmptyCollectionException("DoubleLinkedList");
+
+		boolean found = false;
+		LinearNode<T> current = head;
+
+		while (current != null && !found)
+			if (target.equals(current.getElement()))
+				found = true;
+			else {
+				current = current.getNext();
+			}
+		return found;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return (size == 0);
+	}
+
+	@Override
+	public int size() {
+		return size;
+	}
+
+	public String toString() {
+		StringBuilder strBld = new StringBuilder();
+		strBld.append("[");
+
+		LinearNode<T> current = head;
+		while (current != null) {
+			strBld.append(current.getElement());
+			strBld.append(", ");
+			current = current.getNext();
+		}
+
+		if (size() > 0) {
+			strBld.delete(strBld.length() - 2, strBld.length());
+		}
+
+		strBld.append("]");
+		return strBld.toString();
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		return new DoubleLinkedListIterator();
+	}
+
+	private class DoubleLinkedListIterator implements ListIterator<T> {
+		private int iteratorModCount = modCount;
+		private LinearNode<T> current;
+		private LinearNode<T> previous = null;
+		private boolean flag;
+
+		public DoubleLinkedListIterator() {
+			current = head;
+
+			flag = false;
+		}
+
+		public DoubleLinkedListIterator(int startingIndex) {
+			int index = 0;
+			current = head;
+			while (index != startingIndex) {
+				current = current.getNext();
+				index++;
+			}
+			flag = false;
+		}
+
+		@Override
+		public boolean hasNext() {
+			if (iteratorModCount != modCount)
+				throw new ConcurrentModificationException();
+
+			return (current != null);
+		}
+
+		public boolean hasPrevious() {
+			if (iteratorModCount != modCount)
+				throw new ConcurrentModificationException();
+			return (current.getPrevious() != null);
+		}
+
+		public T previous() {
+			if (iteratorModCount != modCount)
+				throw new ConcurrentModificationException();
+			if (!hasNext())
+				throw new NoSuchElementException("DoubleLinkedList");
+			current = current.getPrevious();
+			previous = current;
+			flag = true;
+			return current.getElement();
+		}
+
+		@Override
+		public T next() {
+			if (iteratorModCount != modCount)
+				throw new ConcurrentModificationException();
+			if (!hasNext())
+				throw new NoSuchElementException("DoubleLinkedList");
+
+			previous = current;
+			current = current.getNext();
+
+			flag = true;
+			return previous.getElement();
+		}
+
+		@Override
+		public int nextIndex() {
+			int index = 0;
+			LinearNode<T> inspector = head;
+			LinearNode<T> target = current.getNext();
+			while (inspector != target) {
+				inspector = inspector.getNext();
+				index++;
+			}
+			return index;
+		}
+
+		@Override
+		public int previousIndex() {
+			int index = 0;
+			LinearNode<T> inspector = head;
+			LinearNode<T> target = current.getPrevious();
+			while (inspector != target) {
+				inspector = inspector.getNext();
+				index++;
+			}
+			return index;
+		}
+
+		@Override
+		public void remove() {
+			if (flag == false) {
+				throw new IllegalStateException();
+			}
+			if (iteratorModCount != modCount)
+				throw new ConcurrentModificationException();
+
+			LinearNode<T> forward = previous.getNext();
+			LinearNode<T> backward = previous.getPrevious();
+			if (previous == tail) {
+				tail = backward;
+			}
+			if (previous == head) {
+				head = forward;
+				previous = forward;
+			}
+			if (forward != null) {
+				forward.setPrevious(backward);
+			}
+			if (backward != null) {
+				backward.setNext(forward);
+				previous = backward;
+			}
+
+			flag = false;
+			size--;
+
+		}
+
+		@Override
+		public void set(T e) {
+			if (flag == true) {
+				if (iteratorModCount != modCount)
+					throw new ConcurrentModificationException();
+				current.setElement(e);
+				flag = false;
+			}
+			iteratorModCount++;
+		}
+
+		@Override
+		public void add(T e) {
+			if (flag = true) {
+				if (iteratorModCount != modCount)
+					throw new ConcurrentModificationException();
+				LinearNode<T> newNode = new LinearNode<T>(e);
+				LinearNode<T> backward = current.getPrevious();
+
+				if (current == head) {
+					head = newNode;
+				}
+
+				newNode.setPrevious(backward);
+				newNode.setNext(current);
+				current.setPrevious(newNode);
+				if (backward != null) {
+					backward.setNext(newNode);
+				}
+
+			}
+			iteratorModCount++;
+			flag = false;
+		}
+
+	}
+
+	@Override
+	public void add(int index, T element) {
+		LinearNode<T> current = head;
+		boolean found = false;
+		while (current != null && !found) {
+			if (current.getElement().equals(index)) {
+				found = true;
+			} else {
+				current = current.getNext();
+			}
+		}
+		if (!found)
+			throw new ElementNotFoundException("DoubleLinkedList");
+		LinearNode<T> newNode = new LinearNode<T>(element);
+		LinearNode<T> next1 = current.getNext();
+		if (tail == current) {
+			newNode.setPrevious(tail);
+			tail.setNext(newNode);
+			tail = newNode;
+
+		} else {
+			newNode.setNext(next1);
+			next1.setPrevious(newNode);
+			current.setNext(newNode);
+			newNode.setPrevious(current);
+		}
+		size++;
+		modCount++;
+
+	}
+
+	@Override
+	public void set(int index, T element) {
+		LinearNode<T> current = head;
+		int count = 0;
+		boolean found = false;
+		while (current != null && !found) {
+			if (count == index) {
+				current.setElement(element);
+			} else {
+				current = current.getNext();
+				count++;
+			}
+		}
+		modCount++;
+	}
+
+	@Override
+	public T get(int index) {
+		LinearNode<T> current = head;
+		int count = 0;
+		boolean found = false;
+		while (current != null && !found) {
+			if (count == index) {
+				return current.getElement();
+			} else {
+				current = current.getNext();
+				count++;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public int indexOf(T element) {
+		int index = 0;
+		LinearNode<T> current = head;
+		int retVal = 0;
+		boolean found = false;
+		while (current != null && !found) {
+			if (current.getElement().equals(element)) {
+				retVal = index;
+			} else {
+				current = current.getNext();
+			}
+		}
+		return retVal;
+	}
+
+	@Override
+	public T remove(int index) {
+		if (isEmpty())
+			throw new EmptyCollectionException("DoubleLinkedList");
+
+		boolean found = false;
+		LinearNode<T> current = head;
+		LinearNode<T> currentPrevious = null;
+		LinearNode<T> currentNext = null;
+		int index1 = 0;
+
+		while (current != null && !found)
+			if (index1 == index) {
+				found = true;
+			} else {
+				current = current.getNext();
+				index1++;
+			}
+
+		if (!found)
+			throw new ElementNotFoundException("DoubleLinkedList");
+
+		currentNext = current.getNext();
+		currentPrevious = current.getPrevious();
+
+		if (size() == 1) { // only one element in the list
+			head = tail = null;
+		} else if (current.equals(head)) { // target is at the head
+			head = current.getNext();
+			current.setPrevious(head);
+		} else if (current.equals(tail)) // target is at the tail
+		{
+			tail.setPrevious(tail.getPrevious());
+			tail.setNext(null);
+		} else { // target is in the middle
+			currentPrevious.setNext(currentNext);
+			currentNext.setPrevious(current.getPrevious());
+		}
+		size--;
+		modCount++;
+
+		return current.getElement();
+	}
+
+	@Override
+	public ListIterator<T> listIterator() {
+
+		return new DoubleLinkedListIterator();
+	}
+
+	@Override
+	public ListIterator<T> listIterator(int startingIndex) {
+		if (startingIndex > size || startingIndex < 0) {
+			return null;
+		}
+		return new DoubleLinkedListIterator(startingIndex);
+	}
+
+	@Override
+	public void add(T element) {
+		addToRear(element);
+	}
+
+}

@@ -1,0 +1,83 @@
+************************
+*Project 4 - MergeSort
+*CompSci 221-2
+*December 12, 2014
+*Caitlyn Goetz
+************************
+
+OVERVIEW:
+	This program is written so that the passed in file of elements gets sorted for smallest to largest.
+	It does this with two methods.  It either uses a comparator which use the compare method to decide
+	which element should come first.  Or it use the elements natural order to sort them.  This program 
+	is also able to find the smallest and the largest elements in a list by also using the comparator
+	or the natural order depending on what the user would like to use.
+
+INCLUDED FILES:
+	The following files should all be contained in the same directory:
+	*DoubleLinkedListADT.java  -  this file contains the DoubleLinkedList description which extends all the
+								  other ADTs.
+	*ElementNotFoundException.java  -  this file contains the program so that the program was able to throw the 
+									    ElementNotFoundException with the DoubleLinkedList.
+	*EmptyCollectionException.java  -  this file contains the program so that the program is able to throw the
+									   EmptyCollectionException with the DoubleLinkedList.
+	*IndexedListADT.java  -  this files allows the DoubleLinkedListADT to extend and use all the methods that
+					`		 are associated with the IndexedList.
+	*ListADT.java  -  this file allows the DoubleLinkedListADT to extend and use all the methods that are
+					  associated with the List.
+	*MergeSort.java  -  this file takes in the list and then orders the elements in the list in ascending order
+						by splitting the list in two until it is down to just one element lists and then puts 
+						them in order.
+	*MergeSortTest.java  -  this file tested the implementation of MergeSort.java to show that it worked.
+	*UnorderedListADT.java -  this file allows the DoubleLinkedListADT to extend and use all the methods that are
+							  associated with the UnorderedList.
+	*WrappedDLL.java  -  this file was the implementation of the DoubleLinkedList that we were provided.
+	
+BUILDING AND RUNNING:
+	The command for compiling this program is:
+			$ javac MergeSortTester.java
+			
+	The command for running the program is:
+		$ java MergeSortTester
+	
+PROGRAM DESIGN:
+	The design for this program is somewhat simple.  There are two different sorting methods: natural order sorting,
+	and using a Comparator to sort the elements.  Each one of the sorting is split into two different sections/methods.
+	They are split into a sorting method, which takes the list and recursively splits it in half until there are a lot
+	of little lists that have only one or, in the case of an empty list, no elements in them.  Then it is passed to the 
+	merge method where the lists/elements are compared to each other and put into order.  There are also methods to find
+	the smallest and largest elements in a list.  These methods don't sort or alter the list but instead just report back
+	the smallest or the largest element.  These methods can also do natural ordering or use a comparator to compare the
+	two elements together to find which one is smaller or larger.
+	
+PROGRAM DEVELOPMENT AND TESTING:
+	To start with, I wrote tests that fully tested the 6 different methods (natural sorting, comparator sorting, natural 
+	smallest, natural largest, comparator smallest and comparator largest) for list that contained no elements, 1, 2, 3, 
+	and 10 elements.   These tests included lists that were already in order, list that were in reverse order, and lists
+	with mixed elements.  I also included lists of 10 elements that had all double integers (1,1,2,2,3,3,4,4,5,5) and a
+	list that had all the same integer that made up the list.  However, I could not run my tests because half of them needed
+	to pass in a Comparator of the test to work and I was confused on what a Comparator was and how to write one.  So I just
+	got into writing the code to better understand what is going on.
+	Writing the code I tried to get all the methods that extended Comparable written and then I moved on to the methods that
+	used the Comparator.  Then I wrote some more tests and debugged my code that way until it worked with my tests.
+
+DISSCUSSION:
+	In the beginning of the Era of Project 4, I thought that this mission had to be easier than the hard time that was the Era 
+	of Project 3 - The Double Linked List.  It started off pretty simple.  I just wrote a couple of tests and ventured farther
+	into the land sorting.  I stumbled upon a map that lead me to a wonderful meadow that was full of beauty and knowledge.
+	However, the sky started to darken and a huge beast crashed to the surface of the lake in the middle of the meadow.  Oh, 
+	crap, this meadow is full of array list implementation and therefore is very dangerous and unhelpful!!!  I scurried out
+	of there as fast as I could and threw that cursed map into the lake as I went.  
+	I wandered aimlessly for hours trying not to be distracted by the little QuickSort bunnies and their claims of success with
+	easy coding.  I barely managed to escape from their clutches right as they were taking me to their lair to devour my brains
+	(and patience).  
+	I wound up on a cliff face, which I was clinging to in hope that my sanity would not leave me, when I saw the famed Lost 
+	Temple of Hope.  This temple looked strangely like one of the tutors that I knew back in my days when I thought was getting
+	a handle on CompSci.  The as I ascended the stairs to the temple, my mind began to clear and the problems with my code were
+	shown to me in clarity.  I was able to begin to fix them and conquer this quest!  I was shown the ways of the mystical Iterator
+	and all of its inner workings.  Thus, making my journey back to the outside world faster.
+	
+SOURCES:
+	The only source that I used was my brain (which was very unhelpful) and the tutors in the MetaGeek Lab. 
+
+EXTRA CREDIT:
+	I did not attempt any extra credit. :(

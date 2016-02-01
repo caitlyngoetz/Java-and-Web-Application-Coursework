@@ -1,0 +1,74 @@
+****************
+*Project 1/GridMonitor
+*CompSci 221
+*September 5, 2014
+*Caitlyn Goetz
+**************** 
+
+OVERVIEW:
+
+	This program takes in a grid which is formated with the first two numbers as the size of the grid and the 
+	rest of the numbers are the quantities that populate the grid.  It then finds the sum of the grid, the
+	averages of the grids, deltas and the danger of those grids.  It then outputs the grid whether if it is safe or not
+	
+INCLUDED FILES:
+
+	*GridMonitorInterface.java  -  this class contains all of the methods that are needed to implement GridMonitor.java
+	*GridMonitor.java  -  this class implements the methods for GridMonitorInterface.java so that it can calculate all of the data 
+							needed to make the GridMonitorTest.java work and pass.
+	*GridMonitorTest.java  -  this class test to make sure all of the methods in GridMonitor.java are functioning correctly.
+	*sample.txt - this is a text file containing a sample grid needed to compile the program
+	*sample4x5.txt  -  this is a text file containing a sample grid needed to compile the program
+	*negatives.txt  -  this is a text file containing a sample grid needed to compile the program 
+	*README  -  this file, to help the user better understand the program.
+	
+BUILDING AND RUNNING:
+
+	The command for compiling this program is:
+				
+			$ javac GridMonitorTest.java
+				
+	The command for running the program is:
+				
+			$ java GridMonitorTest
+				
+PROGRAM DESIGN:
+
+	The program starts off in GridMonitorTest.java, this is where the main method is located.  Once the program realizes that a file
+	has been entered it then ships off the file to the GridMonitor.java class so that the scanner there can read in the file and 
+	construct the base grid with that info.  The GridMonitor class has inherited its methods from the GridMonitorInterface so it is
+	able to implement those methods.  After the base grid is constructed the information from that grid is passed into the 
+	getSurroundingSumGrid() method where the surrounding totals of the tiles are added up and then made into the sum grid.  After
+	the sum grid is complete, the information is passed to the getSurroundingAverageGrid() method where the average of tiles around
+	the selected tile is calculated and then it makes a new grid from that information.  After it finds the average of the surrounding
+	tiles, it finds the amount of change that that tile can have from its tile neighbors.  If the tile base number is outside of that 
+	average then the tile is found to be dangerous and assigned the name Danger.  If it is inside the average then it is "Safe."
+	The GridMonitorTest.java can call any of the methods to calculate the grids from any file, thus making sure that the panel is
+	safe to go on the new spaceship with out going "Kaboom!"
+	
+TESTING:
+
+	I used the tests that were already constructed in the GridMonitorTest to make sure that the methods I constructed in GridMonitor.java
+	worked for the sample.txt.  After I modified my original programming to work with the tests and function properly, I then created
+	my own tests in order to ensure that my program would handle non-square grids.  So I used the sample4x5.txt file to test those tests
+	and my program. After I was finished with those two, I tested my programs affectiveness with the negatives.txt file.  All of the previous
+	tests did fine with the negative numbers.  The only one that didn't pass was the getDangerGridNegativesTest().  After much deliberation,
+	I fixed this by changing my getDangerGrid() method in my GridMonitor.java class by adding Math.abs to all of the values so that they would
+	look at just the numbers and not the negative signs.  
+	
+DISCUSSION:
+
+	I had several issues that I encountered. The biggest problem I had was probably remember how to get started and how to get back into the
+	groove of coding.  Things came back to me very slowly at first but luckily they started to come back faster toward the end because it 
+	was very slow going in the beginning.  The most important one was getting the grids to actually populate.  I had a hard time when I 
+	was trying to pass the previous grids, such as passing base grid into the sum grid method, etc.  I found that when it actually populated
+	the grid, it was only doing so in the method where that happened.  So I had to initialize the grid in the class instead of that method.
+	I also had to research the Scanner and File classes on the internet because I could not remember how to scan in a file.  Luckily, I did
+	have to use much of the File class in the GridMonitor.java because I still don't really get why you would need more than one Scanner
+	to read in a file.  I think I finally get how to populate an array using a for loop and also how to access and manipulate the arrays
+	once they are populated.  We never really went into depth with that last year and I always felt like I was super behind because of it
+	but now I think I am on the right page!!
+	
+EXTRA CREDIT:
+
+	There was no extra credit for this lab.

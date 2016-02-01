@@ -1,0 +1,54 @@
+****************
+* Debugging with Eclipse
+* CompSci 221
+* September 11, 2014
+* Caitlyn Goetz
+****************
+
+TestQuickSort
+
+				 #1			#2		#3		#4		#5		#6		#7		#8
+				  
+1st				  0			0		0		0		0		2		0		3
+				
+last			  49		40		37		1		1		1		37		37
+				
+pivotIndex		  41		38		2		1		1		-		2		4
+					
+pivot value		  83		83		83		83		83		77		83		15
+
+This part was fairly easy once I figured out how to get the pivot value to come up.  Instead
+of stepping over the value, I was stepping into it and the variable window wasn't displaying
+the value of the variable pivotIndex but it was displaying the value of pivot.  But since it 
+is easy to calculate the value of pivot, I didn't need to use that to come up with the values.
+
+
+Recognizer
+
+a.)     pop()  [
+		bop()  (
+		pop()  x
+		bop()  x
+		boop() x
+		
+b.)
+Recognizer.next() line: 97	
+Recognizer.boop() line: 84	
+Recognizer.bop() line: 75	
+Recognizer.pop() line: 63	
+Recognizer.pop() line: 59	
+Recognizer.bop() line: 71	
+Recognizer.pop() line: 63	
+Recognizer.bop() line: 71	
+Recognizer.pop() line: 63	
+Recognizer.pop() line: 59	
+Recognizer.pop() line: 59	
+Recognizer.recognize() line: 41	
+Recognizer.main(String[]) line: 28	
+
+I placed the breakpoint on line 97 which stated:
+		 lookahead = (char)nextChar;
+and the conditional I used was:
+		lookahead == 'y'	
+		
+	
