@@ -1,0 +1,72 @@
+cgoetz
+AllPairs Functionality           15 / 15
+
+Outputs Correct                  10 / 10
+
+Grade                            25 / 25
+
+----------------------------------------
+
+
+
+=====================================
+Files
+=====================================
+
+drwxr-xr-x cgoetz/students   0 2016-12-11 19:42 ./
+-rw-r--r-- cgoetz/students 3690 2016-12-11 19:42 ./AllPairs.java
+.
+
+=====================================
+compiling AllPairs.java
+=====================================
+
+
+=====================================
+Tests with given solutions
+=====================================
+
+--------------- G_0.txt output ---------------
+Slow all pairs is now running...
+        ...time: 23446 milliseconds.
+
+Fast all pairs is now running...
+        ...time: 615 milliseconds.
+
+shortest path: NULL
+--------------- G_0.txt solution ---------------
+Running slow all pairs...
+        ...time: 24114 milliseconds.
+Running faster all pairs...
+        ...time: 722 milliseconds.
+shortest path: NULL
+
+--------------- G_1.txt output ---------------
+Slow all pairs is now running...
+        ...time: 23745 milliseconds.
+
+Fast all pairs is now running...
+        ...time: 629 milliseconds.
+
+shortest path: NULL
+--------------- G_1.txt solution ---------------
+Running slow all pairs...
+        ...time: 23792 milliseconds.
+Running faster all pairs...
+        ...time: 720 milliseconds.
+shortest path: NULL
+
+--------------- G_2.txt output ---------------
+Slow all pairs is now running...
+        ...time: 23348 milliseconds.
+
+Fast all pairs is now running...
+        ...time: 645 milliseconds.
+
+shortest path: -11
+--------------- G_2.txt solution ---------------
+Running slow all pairs...
+        ...time: 23828 milliseconds.
+Running faster all pairs...
+        ...time: 721 milliseconds.
+shortest path: -11
