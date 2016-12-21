@@ -1,0 +1,54 @@
+****************
+* Programming Exercise 2 Huffman Coding
+* CS 421 Design and Analysis of Algorithms
+* Novermber 21, 2016
+* Caitlyn Goetz
+**************** 
+
+OVERVIEW:
+
+ This program takes a text file and compresses its insides using Huffman Coding
+ and then decompressess it using the same coding.  It returns two new files, 
+ showing the results
+
+
+INCLUDED FILES:
+
+ *CompressorTester.java - file containing the main method. Given by instructor.
+ *FileCompressor.java - file containg calls to the Huffman code to encode and decode files
+ *Heap.java - file implementing the heap for the Huffman code to use
+ *HuffmanData - file implementing all the data the the Huffman code uses
+ *HuffmanNode - file making the nodes for the Huffman code to use
+ *HuffmanTreePQ - file holding the tree part of the Huffman code
+
+COMPILING AND RUNNING:
+
+ To compile this program, in the directory containing all the files, run the following command:
+
+	$javac CompressorTester.java
+
+ To run the program after compiling, run the following command in the same directory:
+
+	$java CompressorTest <filename>
+
+PROGRAM DESIGN AND IMPORTANT CONCEPTS:
+
+ For this program, I used the Huffman tree that was assigned in the CS 321 class.  I had to 
+ tweak it a little so that it would run with the driver method that was given.  My Huffman tree
+ uses the frequency of the characters to build a tree and then build the coding running from
+ the bottom of the tree to the top of the tree.  I used an array to hold the information for
+ the tree, encoding and decoding
+
+TESTING:
+
+ To test this program, I used the text files that were provided.  I also used the debug function
+ of Eclipse that I have on my machine.  That is the IDE that I developed this in.  Once I got the
+ program to build, I just ran it against the text files and it worked fine the first time!
+
+DISCUSSION:
+ 
+ The only real problem that I ran into is that my program will crash if I run the larger text files
+ like the EastOfEden.txt on it.  I did find however that once I put it on onyx it ran fine on there
+ however, I did spend a considerable amount of time trying to figure out the stack trace before putting
+ it on onyx.  All in all this went ok.  I did have to fix my Huffman code becasue I didn't do it quite
+ right in CS 321 so it was nice to go back and work on it again.
