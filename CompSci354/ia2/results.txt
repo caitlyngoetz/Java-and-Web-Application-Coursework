@@ -1,0 +1,130 @@
+Test 1
+5.0
+Test 2
+-1.0
+Test 3
+6.0
+Test 4
+0.75
+Test 5
+-1.0
+Test 6
+1.0
+Test 7
+-5.0
+Test 8
+5.0
+Test 9
+1.0
+Test 10
+-5.0
+Test 11
+-5.0
+Test 12
+-1.0
+Test 13
+
+Test 14
+-1.04.0-4.00.75
+Test 15
+0.5
+Test 16
+
+Test 17
+4.016.0
+Test 18
+-10.0
+Test 19
+3.0
+Test 20
+-15.0
+Test 21
+5.0
+Test 22
+
+Test 23
+
+Test 24
+-4.0
+Test 25
+
+Test 26
+
+Test 27
+-8.0
+Test 28
+-8.0
+Test 29
+-0.125
+Test 30
+-6.0
+Test 31
+48.0
+Test 32
+48.0
+Test 33
+34.0
+Test 34
+-0.10000000000000009
+Test 35
+10000.0
+Test 36
+5.0
+Test 37
+5.3
+Test 38
+4.9
+Test 39
+5.3
+Test 40
+5.0
+Test 41
+-5.0
+Test 42
+-5.0
+Test 43
+25.0
+Test 44
+-5.0
+Test 45
+5.0
+Test 46
+5.1
+Test 47
+-5.0
+Test 48
+5.01
+Test 49
+25.0
+Test 50
+5.0
+Test 51
+1.0
+Test 52
+10.0
+Test 53
+5.0
+Test 54
+24.010000000000005
+Test 55
+1.0
+Test 56
+5.1
+Test 57
+25.0
+Test 58
+5.0
+Test 59
+4.0
+Test 60
+15.015.0
+Test 61
+5.0
+Test 62
+5.015.0
+Test 63
+5.030.080.0360.0960.04320.011520.051840.0138240.0622080.010.0
+Test 64
+999.05.0
+Test 65
+-10.0

@@ -1,0 +1,311 @@
+#!/bin/bash
+
+rm results.txt
+javac *.java
+
+####################################################
+#           					   #
+# Tests from IA1 converted to the grammar for IA2  #
+#					           #
+####################################################
+
+echo "Test 1" >> results.txt
+java Interpreter "x=2+3; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 2" >> results.txt
+java Interpreter "x=2-3; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 3" >> results.txt
+java Interpreter "x=2*3; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 4" >> results.txt
+java Interpreter "x=3/4; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 5" >> results.txt
+java Interpreter "x=2+-3; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 6" >> results.txt
+java Interpreter "x=-2+3; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 7" >> results.txt
+java Interpreter "x=-2+-3; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 8" >> results.txt
+java Interpreter "x=(2)+(3); wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 9" >> results.txt
+java Interpreter "x=(-2)+(3); wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 10" >> results.txt
+java Interpreter "x=(-2)+(-3); wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 11" >> results.txt
+java Interpreter "x=-(2+3); wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 12" >> results.txt
+java Interpreter "x=-((-2)-(-3)); wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 13" >> results.txt
+java Interpreter "x=#little comment# -20 * @five@ 5; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 14" >> results.txt
+java Interpreter "x=-(3-2); wr x" "y = x--5; wr y" "z=x*y; wr z" "w=-(-3/-z); wr w" >> results.txt
+echo "" >> results.txt
+
+echo "Test 15" >> results.txt
+java Interpreter "x=                        5/ # I want this to be a half number # 10; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 16" >> results.txt
+java Interpreter "x=1000#cats#+500@dogs@; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 17" >> results.txt
+java Interpreter "x = 4; wr x" "x = x * x; wr x " >> results.txt
+echo "" >> results.txt
+
+echo "Test 18" >> results.txt
+java Interpreter "x = ((30*3)/(-9)); wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 19" >> results.txt
+java Interpreter "x=1##-##( ##-##2##); wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 20" >> results.txt
+java Interpreter "x=-10-4-1-1-(-1); wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 21" >> results.txt
+java Interpreter "x=-1+10-1-1-1-1; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 22" >> results.txt
+java Interpreter "@akdljfalksdjf-=x=@x=#--df;df;dfds#-3; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 23" >> results.txt
+java Interpreter "#asdjfdkjfdkx=#x=2@dfjkjfd@-3; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 24" >> results.txt
+java Interpreter "##x##=@@(##-1@@)##-3@@; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 25" >> results.txt
+java Interpreter "x=1##-(## @@@@ @@-##2)##; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 26" >> results.txt
+java Interpreter "x=1##-## #### @@(-##2)@@; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 27" >> results.txt
+java Interpreter "x=1*(## (-8))##; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 28" >> results.txt
+java Interpreter "x=1*##-8; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 29" >> results.txt
+java Interpreter "x=1/##        @@      (-8); wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 30" >> results.txt
+java Interpreter "x=-(1+2)-(1+2); wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 31" >> results.txt
+java Interpreter "x=1-(3+5*(-10)); wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 32" >> results.txt
+java Interpreter "x=1-(3+5*-10); wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 33" >> results.txt
+java Interpreter "x=-(-10+4*(-10+4)); wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 34" >> results.txt
+java Interpreter "x=2.5-(2.6); wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 35" >> results.txt
+java Interpreter "x=#Its late and I'm calling the tests finished# 10000; wr x" >> results.txt
+echo "" >> results.txt
+
+####################################################
+#           					   #
+# 	      Tests for if statements	 	   #
+#					           #
+####################################################
+
+echo "Test 36" >> results.txt
+java Interpreter "x=5; if x==5 then wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 37" >> results.txt
+java Interpreter "x=5.3; if x<>5 then wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 38" >> results.txt
+java Interpreter "x=4.9; if x<5 then wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 39" >> results.txt
+java Interpreter "x=5.3; if x>5 then wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 40" >> results.txt
+java Interpreter "x=5; if x<=5 then wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 41" >> results.txt
+java Interpreter "x=-5; if x<=5 then wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 42" >> results.txt
+java Interpreter "x=-5; if x==-5 then wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 43" >> results.txt
+java Interpreter "x=25; if x>=5 then wr x" >> results.txt
+echo "" >> results.txt
+
+####################################################
+#           					   #
+# 	    Tests for ifelse statements	 	   #
+#					           #
+####################################################
+
+echo "Test 44" >> results.txt
+java Interpreter "FAIL=0; x=-5; if x==5 then wr FAIL else wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 45" >> results.txt
+java Interpreter "FAIL=0; x=5; if x<>5 then wr FAIL else wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 46" >> results.txt
+java Interpreter "FAIL=0; x=5.1; if x<5 then wr FAIL else wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 47" >> results.txt
+java Interpreter "FAIL=0; x=-5; if x>5 then wr FAIL else wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 48" >> results.txt
+java Interpreter "FAIL=0; x=5.01; if x<=5 then wr FAIL else wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 49" >> results.txt
+java Interpreter "FAIL=0; x=25; if x<=5 then wr FAIL else wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 50" >> results.txt
+java Interpreter "FAIL=0; x=5; if x==-5 then wr FAIL else wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 51" >> results.txt
+java Interpreter "FAIL=0; x=1; if x>=5 then wr FAIL else wr x" >> results.txt
+echo "" >> results.txt
+
+####################################################
+#           					   #
+# 	    Tests for while statements	 	   #
+#					           #
+####################################################
+
+echo "Test 52" >> results.txt
+java Interpreter "x=5; while x==5 do x=x+x; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 53" >> results.txt
+java Interpreter "x=5.3; while x<>5 do x=x-.3; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 54" >> results.txt
+java Interpreter "x=4.9; while x<5 do x = x*x; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 55" >> results.txt
+java Interpreter "x=5.3; while x>5 do x=x/x; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 56" >> results.txt
+java Interpreter "x=5; while x<=5 do x=x+.1; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 57" >> results.txt
+java Interpreter "x=-5; while x<=5 do x=-x*-x; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 58" >> results.txt
+java Interpreter "x=-5; while x==-5 do x=-x; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 59" >> results.txt
+java Interpreter "x=25; while x>=5 do x=x-1; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 60" >> results.txt
+java Interpreter "x = 15; y = 5; while x <> y do if y < x then y=y+1 else y=y-1; wr x; wr y" >> results.txt
+echo "" >> results.txt
+
+####################################################
+#           					   #
+# 	    Tests for begin statements	 	   #
+#					           #
+####################################################
+
+echo "Test 61" >> results.txt
+java Interpreter "begin x=5; wr x end" >> results.txt
+echo "" >> results.txt
+
+echo "Test 62" >> results.txt
+java Interpreter "y=10; begin x=5; wr x end; z=x+y; wr z" >> results.txt
+echo "" >> results.txt
+
+echo "Test 63" >> results.txt
+java Interpreter "y=10; f=0; x=5; while f < 10 do begin f=f+1; begin if x>y then begin z=x-y; y=3*x end else if x < y then begin z=y-x; x=4*y end else begin z=x*y; x=x+2 end end; wr z end; wr f" >> results.txt
+echo "" >> results.txt
+
+####################################################
+#           					   #
+# 	    Tests for begin statements	 	   #
+#					           #
+####################################################
+
+echo "Test 64" >> results.txt
+java Interpreter "x=999; begin wr x; x=10; x=x-5 end; wr x" >> results.txt
+echo "" >> results.txt
+
+echo "Test 65" >> results.txt
+java Interpreter "x=10; wr -x" >> results.txt
+
+diff expected.txt results.txt > diff.txt
+
+if [[ -s ./diff.txt ]];
+then
+    echo "Fail: check diff.txt"
+else 
+    echo "Pass"
+    rm diff.txt
+fi; 
+
+rm *.class

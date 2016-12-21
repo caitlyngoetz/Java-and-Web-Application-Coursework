@@ -1,0 +1,9 @@
+aaa*b*a*a
+aabaa
+aaa
+aabba
+abbaa
+abbbbbbbbbbbbbbbba
+bbaa
+
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaa

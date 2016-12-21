@@ -1,0 +1,31 @@
+#!/bin/awk -f
+
+BEGIN{
+        FPAT= "([^,]+)|(\"[^\"]+\")"
+        print "<html>\n"
+
+        print "<head>"
+        print "<title>Housing<\title>"
+        print "</head>\n"
+
+        print "<body>"
+        print "<h1>Single-Family Dwellings</h1>\n"
+        print "<table border="2">"
+        printf("<td> %s &nbsp; &nbsp; <td>", "DATE")
+        printf("<td> %s &nbsp; &nbsp; <td>", "SUBDIVISION")
+        printf("<td> %s &nbsp; &nbsp; <td>", "LOT")
+        printf("<td> %s &nbsp; &nbsp; <td>", "BLOCK")
+        printf("<td> %s &nbsp; &nbsp; <td>", "VALUE")
+}
+
+tolower($3) ~/single fami?l?y? dwelli?n?g?/{
+        print "\n<tr>"
+        printf("<td> %s &nbsp; &nbsp; <td>", $1)
+        printf("<td> %s &nbsp; &nbsp; <td>", $5)
+        printf("<td> %s &nbsp; &nbsp; <td>", $6)
+        printf("<td> %s &nbsp; &nbsp; <td>", $7)
+        printf("<td> %s &nbsp; &nbsp; <td>", $8)
+        print "</tr>\n"
+}
+
+END {print " </table>\n", "</body>\n", "</html>\n"}

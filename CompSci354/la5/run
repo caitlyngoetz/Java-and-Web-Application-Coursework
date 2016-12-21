@@ -1,0 +1,8 @@
+#!/bin/bash -x
+
+export PATH=/usr/bin:/bin
+
+gmcs -r:System.Windows.Forms.dll -r:System.Drawing.dll \
+    LightSwitch.cs
+
+mono LightSwitch.exe

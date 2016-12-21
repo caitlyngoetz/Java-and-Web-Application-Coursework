@@ -1,0 +1,5 @@
+#!/bin/bash -x
+
+export PATH=/usr/local/bin:/user/bin:/bin
+
+scheme --load scheme.scm < /dev/null

@@ -1,0 +1,14 @@
+Name: Caitlyn Goetz
+Date: April 28, 2016
+Program: Language Assignment 5
+
+I used the VMWare and C# Express to port this program.  The only major snag that I ran into while trying to 
+learn this was figuring out how to get the VM up and running on the lab computers.  For some reason, it was
+just not working for me and I kept somehow opening the wrong version of Windows.  But once I got that figured
+out, I was really off and running.
+
+For the differences between the programs, there were a couple but they are much more similar than scheme and prolog are to java.  One thing I was really interested in was the if statements in the method Button_Click.  It really 
+interesting to me that you can use that kind of if statement and just set it equal to a variable (you might be able
+to do this in other languages but I still thought it was really different looking).  I also thought it was 
+interesting how to return a 0 in C#, you have to put it in quotations instead of just saying return 0;.  Besides
+those differences and learning how to get a VM working on Onyx, I found this language fairly easy and comforting than other languages that we have learned in this class.

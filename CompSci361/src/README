@@ -1,0 +1,80 @@
+Name: Caitlyn Goetz
+Class: CS 361-001
+Professior: Bogdan Dit
+Date: April 2, 2016
+
+FILES:
+
+*MainProject1.java - The file containing the scanner that reads the file and the main method that controls the rest of the files.
+*Scan.java - The file that controls how the project scans the regular expression to see if the strings passed in match the regular expression.
+*Parser.java - Parses out the string into a HashTable to allow for it to be compared to the regular expression.  Also holds the class to create the NFA and its start states.
+*RegEx.java - Stores the regular expression so that it cn be compared to the strings as they are passed in.
+*State.java - Holds the current states of the NFA so that they can make sure to be followed to confirm if the string matches the regular expression.
+*README - this file that describes the other files.
+*q1.txt - File that contains a test
+*q2.txt - File that contains another test
+*q3.txt - File that contains another test
+
+TO COMPILE:
+
+In order to compile this project, type the following in the command line:
+
+	javac MainProject.java
+
+
+TO RUN:
+
+In order to run this project, type the following into the command line:
+
+	java MainProject1 <filename>
+
+Where the filename is of an existing file in the directory with the first line containing the regular expression and the rest of the lines containing the strings you want to test (one per line).
+
+SAMPLE OUTPUT:
+
+On the file q1.txt:
+aaa*b*a*a
+aabaa
+aaa
+aabba
+abbaa
+abbbbbbbbbbbbbbbba
+bbaa
+
+java MainProject1 q1.txt
+yes
+yes
+yes
+no
+no
+no
+
+On the file q2.txt:
+(a|b)*b*ba
+aabba
+aabbbbba
+bbbbbba
+ba
+ab
+
+java MainProject q2.txt
+yes
+yes
+yes
+yes
+no
+
+On the file q3.txt
+a*b*abba
+abba
+aabbabba
+aabb
+bbaaabba
+bbaabba
+
+java MainProject q3.txt
+yes
+yes
+no
+yes
+yes

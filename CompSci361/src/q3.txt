@@ -1,0 +1,6 @@
+a*b*abba
+abba
+aabbabba
+aabb
+bbaaabba
+bbaabba
