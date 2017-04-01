@@ -1,0 +1,114 @@
+body {
+	background-color: #A4A4A4;
+}
+
+.login {
+	text-align: right;
+}
+
+.banner{
+	height: 80px;
+	width: 90%;
+	margin: auto;
+}
+
+.banner h1{
+	margin: 0;
+	margin-top: 10px;
+	font-size: 40px;
+	float: right;
+	color: #5F04B4;
+	font-family: "Coronetscript", cursive;
+}
+
+.logo{
+	width: 50%;
+	padding-right: 50%;
+}
+
+.logo > img{
+	width: 100px;
+	height: 100px;
+	padding: 0%;
+	float: left;
+	padding-bottom: 0px;
+}
+
+#navigation{
+	background-color: #045FB4;
+	margin: 10px;
+}
+
+#navigation > ul{
+	padding: 0px;
+	width: 80%;
+	margin: 0px auto;
+}
+
+#navigation > ul > li{
+	display: inline;
+	color: #FFFFFF;
+	line-height: 25px;
+}
+
+#navigation a{
+	color: #FAFAFA;
+	font-weight: bold;
+	padding: 10px 20px;
+}
+
+a .blogs {
+	color: #5F04B4;
+}
+
+#footer{
+	left: 0px;
+	bottom: 40px;
+	height: 30px;
+	width: 100%;
+	text-align: center;
+}
+
+#list{
+	background-color: #5F04B4;
+	width: 15%; 
+	float: left;
+}
+
+#list > ul > li{
+	color: #FFFFFF;
+}
+
+#list a{
+	color: #FFFFFF;
+}
+
+
+
+
+#list a{
+	color: #FFFFFF;
+}
+
+.blog{
+	text-align: left;
+	display: block;
+	width: 75%;
+	float: right;
+	font-size: 18px;
+}
+
+.blog > h2{
+	font-family: 'Indie Flower', sans-serif;
+	font-weight: 300;
+}
+
+.photo {
+	display: block	
+}
+
+.photo > img{
+	width: 400px;
+	height: 300px;
+	margin-left: 25%;
+}
